@@ -1,0 +1,3048 @@
+{
+	"info": {
+		"_postman_id": "0333a3f8-ac94-4a69-b03a-cd1a14556c6f",
+		"name": "UKT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20267612"
+	},
+	"item": [
+		{
+			"name": "ROLE",
+			"item": [
+				{
+					"name": "GET ALL ROLE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/role",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST ROLE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_role\": \"siswa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/role",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT ROLE",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ROLE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/role/super admin",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"role",
+								"super admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "CABANG",
+			"item": [
+				{
+					"name": "GET ALL CABANG",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/cabang",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"cabang"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST CABANG",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"malang\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/cabang",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"cabang"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT CABANG",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\" : \"puncu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/cabang/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"cabang",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE CABANG",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/cabang/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"cabang",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RANTING",
+			"item": [
+				{
+					"name": "GET ALL RANTING",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ranting",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ranting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST RANTING",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cabang\": 1,\r\n    \"name\": \"sawojajar\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ranting",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ranting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT RANTING",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_cabang\": 2,\r\n    \"name\": \"gedangsewu\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ranting/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ranting",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE REQUEST",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ranting/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ranting",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USER",
+			"item": [
+				{
+					"name": "GET ALL USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJpZF91c2VyIjozLCJpZF9yb2xlIjoiYWRtaW4ifQ.ZNaHItOZcOSBS_IihMYEJj7a5iL_nXcUcNzdLhpf3lY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET USER BY ID",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "POST USER",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "username",
+								"value": "test c1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "name",
+								"value": "test c1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "id_role",
+								"value": "super admin",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "id_cabang",
+								"value": "1",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "foto",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "niw",
+									"value": "1213441",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "hartono13",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "hartono13",
+									"type": "text"
+								},
+								{
+									"key": "id_role",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "id_ranting",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/RAFI DUTA/Pictures/1031467-honda-cbr-250rr-motorcycles-1990.jpg"
+								},
+								{
+									"key": "password",
+									"value": "hartono",
+									"type": "text"
+								},
+								{
+									"key": "no_wa",
+									"value": "092384082309",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "NEW AUTH USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\" : \"hartono\",\r\n    \"password\" : \"hartono\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/user/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"user",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT USER",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "NIW",
+									"value": "192843232",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "test1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test1",
+									"type": "text"
+								},
+								{
+									"key": "id_role",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "id_ranting",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/RAFI DUTA/Pictures/juiceWRLD.jpg"
+								},
+								{
+									"key": "password",
+									"value": "test1",
+									"type": "text"
+								},
+								{
+									"key": "no_wa",
+									"value": "0812189088",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/user/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"user",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOjMsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4MTE3NTU5MX0.M62kDbP6OsWIkycRfRGKFu_7gtJwF5b44aA50qRVIOA",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "SISWA",
+			"item": [
+				{
+					"name": "GET ALL SISWA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/siswa",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"siswa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY RANTING",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/siswa/ranting/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"siswa",
+								"ranting",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST SISWA",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_event\": 1,\r\n    \"nis\": \"0812212842221\",\r\n    \"name\": \"Puss in boots\",\r\n    \"id_role\": \"siswa\",\r\n    \"jenis_latihan\": \"hard\",\r\n    \"jenis_kelamin\": \"pria\",\r\n    \"ukt\": \"UKT Jambon\",\r\n    \"id_ranting\": 1,\r\n    \"id_rayon\": 1,\r\n    \"tingkatan\": \"kuning\"\r\n}           ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/siswa",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"siswa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST LUPA PASSWORD BY NIW",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nis\": 2147483647,\r\n    \"password\": \"anjay\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/siswa/nis",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"siswa",
+								"nis"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT SISWA",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_event\": 1,\r\n    \"nis\": \"0812212842221\",\r\n    \"name\": \"Puss in boots\",\r\n    \"id_role\": \"siswa\",\r\n    \"jenis_latihan\": \"hard\",\r\n    \"jenis_kelamin\": \"pria\",\r\n    \"ukt\": \"UKT Jambon\",\r\n    \"id_ranting\": 1,\r\n    \"id_rayon\": 2,\r\n    \"tingkatan\": \"kuning\"\r\n}           ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/siswa/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"siswa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE SISWA",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/siswa/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"siswa",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "PENGURUS",
+			"item": [
+				{
+					"name": "GET ALL PENGURUS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/pengurus",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"pengurus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST PENGURUS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "niw",
+									"value": "122132423",
+									"type": "text"
+								},
+								{
+									"key": "jabatan",
+									"value": "katas",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test b1",
+									"type": "text"
+								},
+								{
+									"key": "id_role",
+									"value": "pengurus ranting",
+									"type": "text"
+								},
+								{
+									"key": "id_ranting",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "id_cabang",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "test b1",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "test b1",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/RAFI DUTA/Pictures/w5vqjns1zina1.jpeg"
+								},
+								{
+									"key": "no_wa",
+									"value": "213423421",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/pengurus",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"pengurus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY NAMA DAN RANTING",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"name\": \"test\",\r\n \"id_ranting\": 3   \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/pengurus/name_dan_ranting",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"pengurus",
+								"name_dan_ranting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT PENGURUS",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "niw",
+									"value": "90328423",
+									"type": "text"
+								},
+								{
+									"key": "jabatan",
+									"value": "master",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "jared higgins",
+									"type": "text"
+								},
+								{
+									"key": "id_role",
+									"value": "pengurus cabang",
+									"type": "text"
+								},
+								{
+									"key": "id_ranting",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "id_cabang",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "juice wrld",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "feeling",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/RAFI DUTA/Pictures/juiceWRLD.jpg"
+								},
+								{
+									"key": "no_wa",
+									"value": "0983211",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/pengurus/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"pengurus",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PENGURUS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/pengurus/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"pengurus",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AUTH PENGURUS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test b2\",\r\n    \"password\": \"test b2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/pengurus/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"pengurus",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST LUPA PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"niw\": \"122132423\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/pengurus/niw",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"pengurus",
+								"niw"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PENGUJI",
+			"item": [
+				{
+					"name": "GET ALL PENGUJI",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/penguji",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"penguji"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST PENGUJI",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "niw",
+									"value": "4884628",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "test a8",
+									"type": "text"
+								},
+								{
+									"key": "id_role",
+									"value": "penguji",
+									"type": "text"
+								},
+								{
+									"key": "id_ranting",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "test a8",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/RAFI DUTA/Pictures/billyjoe.jpg"
+								},
+								{
+									"key": "password",
+									"value": "test a8",
+									"type": "text"
+								},
+								{
+									"key": "no_wa",
+									"value": "0545641",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/penguji",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"penguji"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET BY NAME DAN CABANG",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"test a4\",\r\n    \"id_ranting\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/penguji/name_dan_ranting",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"penguji",
+								"name_dan_ranting"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AUTH PENGUJI",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test a8\",\r\n    \"password\": \"test a8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/penguji/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"penguji",
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT PENGUJI",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "niw",
+									"value": "029382",
+									"type": "text"
+								},
+								{
+									"key": "jabatan",
+									"value": "ketuas sekda",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "sunaryo",
+									"type": "text"
+								},
+								{
+									"key": "id_role",
+									"value": "penguji",
+									"type": "text"
+								},
+								{
+									"key": "id_ranting",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "id_cabang",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "sunaryo",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "sunaryo",
+									"type": "text"
+								},
+								{
+									"key": "foto",
+									"type": "file",
+									"src": "/C:/Users/RAFI DUTA/Pictures/WakingTheFallen.jpg"
+								},
+								{
+									"key": "no_wa",
+									"value": "032498",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/penguji/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"penguji",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PENGUJI",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/penguji/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"penguji",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST LUPA PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"niw\": \"029382\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/penguji/niw",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"penguji",
+								"niw"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "RAYON",
+			"item": [
+				{
+					"name": "GET ALL RAYON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/rayon",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"rayon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST RAYON",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_ranting\": 1,\r\n    \"name\": \"fesmala\",\r\n    \"alamat\": \"tulungrejo gajahmada no.10\",\r\n    \"tanggal\": \"2023-03-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/rayon",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"rayon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT RAYON",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_ranting\": 3,\r\n    \"name\": \"fesmala\",\r\n    \"alamat\": \"tulungrejo gajahmada no.12\",\r\n    \"tanggal\": \"2023-03-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/rayon/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"rayon",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE RAYON",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/rayon/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"rayon",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SENAM",
+			"item": [
+				{
+					"name": "GET ALL SENAM",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/senam",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"senam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST SENAM",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 3,\r\n    \"senam69\": true,\r\n    \"senam23\": true,\r\n    \"senam14\": false,\r\n    \"senam90\": true,\r\n    \"senam61\": false,\r\n    \"senam49\": false,\r\n    \"senam59\": true,\r\n    \"senam64\": false,\r\n    \"senam12\": true,\r\n    \"senam33\": true,\r\n    \"senam44\": true,\r\n    \"senam11\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/senam",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"senam"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT SENAM",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"senam69\": true,\r\n    \"senam23\": true,\r\n    \"senam14\": true,\r\n    \"senam90\": true,\r\n    \"senam61\": true,\r\n    \"senam49\": true,\r\n    \"senam59\": true,\r\n    \"senam64\": false,\r\n    \"senam12\": true,\r\n    \"senam33\": true,\r\n    \"senam44\": true,\r\n    \"senam11\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/senam/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"senam",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE SENAM",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/senam/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"senam",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "JURUS",
+			"item": [
+				{
+					"name": "GET ALL JURUS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/jurus",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"jurus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST JURUS",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"jurus1A\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/jurus",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"jurus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT JURUS",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/jurus/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"jurus",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE JURUS",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/jurus/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"jurus",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TEKNIK",
+			"item": [
+				{
+					"name": "GET ALL TEKNIK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/teknik",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"teknik"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST TEKNIK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"teknik1\": \"cukup\",\r\n    \"teknik2\": \"baik\",\r\n    \"teknik3\": \"kurang\",\r\n    \"teknik4\": \"cukup\",\r\n    \"teknik5\": \"cukup\",\r\n    \"teknik6\": \"baik\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/teknik",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"teknik"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT TEKNIK",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"teknik1\": \"cukup\",\r\n    \"teknik2\": \"baik\",\r\n    \"teknik3\": \"kurang\",\r\n    \"teknik4\": \"cukup\",\r\n    \"teknik5\": \"cukup\",\r\n    \"teknik6\": \"baik\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/teknik/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"teknik",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE TEKNIK",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/teknik/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"teknik",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "FISIK",
+			"item": [
+				{
+					"name": "GET ALL FISIK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/fisik",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"fisik"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST FISIK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 3,\r\n    \"mft\": 42,\r\n    \"push_up\": 30,\r\n    \"spir_perut_atas\": 23,\r\n    \"spir_perut_bawah\": 34,\r\n    \"spir_dada\": 25,\r\n    \"plank\": \"baik\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/fisik",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"fisik"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT FISIK",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 3,\r\n    \"mft\": 42,\r\n    \"push_up\": 30,\r\n    \"spir_perut_atas\": 23,\r\n    \"spir_perut_bawah\": 34,\r\n    \"spir_dada\": 25,\r\n    \"plank\": \"baik\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/fisik/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"fisik",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE FISIK",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/fisik/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"fisik",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "STANDAR_FISIK",
+			"item": [
+				{
+					"name": "GET ALL STANDAR_FISIK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/standar_fisik",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"standar_fisik"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST STANDAR FISIK",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipe_ukt\": \"UKT Jambon\",\r\n    \"peserta\": \"Privat - Laki laki\",\r\n    \"mft\": 42,\r\n    \"push_up\": 30,\r\n    \"spir_perut_atas\": 23,\r\n    \"spir_perut_bawah\": 34,\r\n    \"spir_dada\": 25,\r\n    \"plank\": 3000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/standar_fisik",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"standar_fisik"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT STANDAR FISIK",
+					"request": {
+						"method": "PUT",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE STANDAR_FISIK",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UKCW",
+			"item": [
+				{
+					"name": "GET ALL UKCW",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukcw",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukcw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST UKCW",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"id_rayon\": 3,\r\n    \"keshan\": 82,\r\n    \"senam\": 78,\r\n    \"jurus\": 89,\r\n    \"fisik\": 99,\r\n    \"teknik\": 67,\r\n    \"sambung\": 85\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukcw",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukcw"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT UKCW",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"id_rayon\": 3,\r\n    \"keshan\": 92,\r\n    \"senam\": 98,\r\n    \"jurus\": 99,\r\n    \"fisik\": 99,\r\n    \"teknik\": 67,\r\n    \"sambung\": 85\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukcw/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukcw",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE UKCW",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukcw/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukcw",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UKT_JAMBON",
+			"item": [
+				{
+					"name": "GET ALL UKT_JAMBON",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_jambon",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_jambon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST UKT_JAMBON",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"id_rayon\": 3,\r\n    \"keshan\": 82,\r\n    \"senam\": 78,\r\n    \"jurus\": 89,\r\n    \"fisik\": 99,\r\n    \"teknik\": 67,\r\n    \"sambung\": 85\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_jambon",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_jambon"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT UKT_JAMBON",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"id_rayon\": 3,\r\n    \"keshan\": 82,\r\n    \"senam\": 78,\r\n    \"jurus\": 89,\r\n    \"fisik\": 79,\r\n    \"teknik\": 100,\r\n    \"sambung\": 85\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_jambon/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_jambon",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE UKT_JAMBON",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_jambon/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_jambon",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UKT_HIJAU",
+			"item": [
+				{
+					"name": "GET ALL UKT_HIJAU",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_hijau",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_hijau"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST UKT_HIJAU",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"id_rayon\": 3,\r\n    \"keshan\": 82,\r\n    \"senam\": 78,\r\n    \"jurus\": 89,\r\n    \"fisik\": 99,\r\n    \"teknik\": 67,\r\n    \"sambung\": 85\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_hijau",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_hijau"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT UKT_HIJAU",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"id_rayon\": 3,\r\n    \"keshan\": 62,\r\n    \"senam\": 78,\r\n    \"jurus\": 95,\r\n    \"fisik\": 99,\r\n    \"teknik\": 87,\r\n    \"sambung\": 85\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_hijau/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_hijau",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE UKT_HIJAU",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_hijau/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_hijau",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UKT_PUTIH",
+			"item": [
+				{
+					"name": "GET ALL UKT_PUTIH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_putih",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_putih"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST UKT_PUTIH",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"id_rayon\": 3,\r\n    \"keshan\": 82,\r\n    \"senam\": 78,\r\n    \"jurus\": 89,\r\n    \"fisik\": 99,\r\n    \"teknik\": 67,\r\n    \"sambung\": 85\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_putih",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_putih"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT UKT_PUTIH",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_siswa\": 1,\r\n    \"id_rayon\": 3,\r\n    \"keshan\": 82,\r\n    \"senam\": 98,\r\n    \"jurus\": 85,\r\n    \"fisik\": 90,\r\n    \"teknik\": 77,\r\n    \"sambung\": 90\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_putih/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_putih",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE UKT_PUTIH",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukt_putih/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt_putih",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SOAL",
+			"item": [
+				{
+					"name": "GET ALL SOAL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/soal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"soal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SOAL BY ID LEMBAR_SOAL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/soal/332cefc8-c5ed-4edc-8318-9d43878e149a",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"soal",
+								"332cefc8-c5ed-4edc-8318-9d43878e149a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST SOAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_lembar_soal\": \"96712cbe-e131-4464-bce4-df355a378288\",\r\n    \"pertanyaan\": \"ada 40 telur bebek kemudian dimakan Adi 3, sisa berapa telurnya ?\",\r\n    \"opsi1\": \"15\",\r\n    \"opsi2\": \"3\",\r\n    \"opsi3\": \"6\",\r\n    \"opsi4\": \"1\",\r\n    \"opsi\": \"opsi3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/soal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"soal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT SOAL",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_lembar_soal\": \"96712cbe-e131-4464-bce4-df355a378288\",\r\n    \"pertanyaan\": \"bagaimana cara memompa ban\",\r\n    \"opsi1\": \"ditiup\",\r\n    \"opsi2\": \"menggunakan sedotan\",\r\n    \"opsi3\": \"menggunakan pompa\",\r\n    \"opsi4\": \"menggunakan kipas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/soal/7b35703c-72cf-4791-92b1-603b6d22a3a8",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"soal",
+								"7b35703c-72cf-4791-92b1-603b6d22a3a8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE SOAL",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/soal/e8f664a1-cd30-437f-9b7f-9b330c6cb4dc",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"soal",
+								"e8f664a1-cd30-437f-9b7f-9b330c6cb4dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SOAL TANPA KUNCI",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/soal/kosong",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"soal",
+								"kosong"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SOAL WITH KUNCI",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_lembar_soal\": \"96712cbe-e131-4464-bce4-df355a378288\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/soal/kunci_jawaban",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"soal",
+								"kunci_jawaban"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "LEMBAR_SOAL",
+			"item": [
+				{
+					"name": "GET ALL LEMBAR_SOAL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/lembar_soal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"lembar_soal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST LEMBAR SOAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_ranting\": 1,\r\n    \"tipe_ukt\": \"UKT Putih\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/lembar_soal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"lembar_soal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT LEMBAR SOAL",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_ranting\": 1,\r\n    \"tipe_soal\": \"ukcw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/lembar_soal/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"lembar_soal",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE LEMBAR SOAL",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/lembar_soal/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"lembar_soal",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "KUNCI_SOAL",
+			"item": [
+				{
+					"name": "GET ALL KUNCI SOAL",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/kunci_soal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"kunci_soal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST SCORE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_soal\": \"c491d617-c54a-47b0-bcbd-8e2fdfb5cca2\",\r\n    \"opsi\": \"opsi3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/kunci_soal/score",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"kunci_soal",
+								"score"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST KUNCI SOAL",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_soal\": \"8c7601bb-1ab5-4bf7-82f8-1\",\r\n    \"opsi\": \"opsi1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/kunci_soal",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"kunci_soal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT KUNCI SOAL",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_soal\": 3,\r\n    \"opsi\": \"opsi3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/kunci_soal/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"kunci_soal",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE KUNCI SOAL",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/kunci_soal/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"kunci_soal",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SESSION",
+			"item": [
+				{
+					"name": "GET ALL SESSION",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/session",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST SESSION",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_lembar_soal\": \"96712cbe-e131-4464-bce4-df355a378288\",\r\n    \"id_siswa\": 3,\r\n    \"nilai\": 90,\r\n    \"waktu_pengerjaan\": 3000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/session",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT SESSION",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_lembar_soal\": 2,\r\n    \"id_siswa\": 2,\r\n    \"waktu_pengerjaan\": 4000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/session/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"session",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE SESSION",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/session/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"session",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "EVENT",
+			"item": [
+				{
+					"name": "GET ALL EVENT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/event",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST EVENT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Puncak Akbar\",\r\n    \"tanggal\": \"2023-04-01\",\r\n    \"tipe\": \"UKCW\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/event",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"event"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT EVENT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Puncak Akbar\",\r\n    \"tanggal\": \"2023-04-01\",\r\n    \"tipe\": \"ukcw\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/event/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"event",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE EVENT",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/event/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"event",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UKT",
+			"item": [
+				{
+					"name": "GET ALL UKT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/ukt",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST UKT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"tipe_ukt\": \"UKT Jambon\",\r\n    \"keshan\": 12,\r\n    \"jurus\": 12,\r\n    \"teknik\": 12,\r\n    \"sambung\": 34\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/ukt",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"ukt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SAMBUNG",
+			"item": [
+				{
+					"name": "GET ALL SAMBUNG",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/sambung",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"sambung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST SAMBUNG",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_penguji\": 2,\r\n    \"id_siswa1\": 3,\r\n    \"id_siswa2\": 2,\r\n    \"nilai1\": 90,\r\n    \"nilai2\": 85\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/sambung",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"sambung"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT SAMBUNG",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id_penguji\": 2,\r\n    \"id_siswa1\": 3,\r\n    \"id_siswa2\": 2,\r\n    \"nilai1\": 100,\r\n    \"nilai2\": 75\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/ukt/sambung/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"sambung",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE SAMBUNG",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ukt/sambung/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ukt",
+								"sambung",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzZXIiOjEsInJvbGUiOiJhZG1pbiIsImlhdCI6MTY4MTI1ODQ1NX0.1L9hyqQnTuEVvHSNCMQLdkkPtS5vFxM8zX8FN-sQ2kc",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

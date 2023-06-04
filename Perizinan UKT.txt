@@ -1,0 +1,109 @@
+1. admin
+2. admin ranting
+3. super admin
+4. pengurus cabang
+5. pengurus ranting
+6. penguji
+7. siswa
+
+1,2,3,4,5 bisa akses semua data tetapi 'admin ranting' dan 'pengurus ranting' tidak bisa akses data di luar ranting
+jadi semua api yang mengambil, menambah, merubah, atau merusak data di luar ranting akan hanya bisa diakses bisa diakses 1,3,4
+
+route 
+	cabang 
+		add cabang: 1,3,4,5
+	event: semua Staff yang terautentikasi punya akses CRUD
+	fisik: semua Staff yang terautentikasi punya akses CRUD
+	jurus: semua Staff yang terautentikasi punya akses CRUD
+	kunci soal: semua Staff yang terautentikasi punya akses CRUD
+	lembar soal: semua Staff yang terautentikasi punya akses CRUD	
+	penguji
+		get penguji: 1,2,3,4,5,6,
+		add penguji: 1,2,3,4,5,
+		edit penguji: 1,2,3,4,5,
+		delete penguji: 1,2,3,4,5
+		lupa password: no auth required,
+		auth login: no auth required
+	pengurus
+		get pengurus: 1,2,3,4,5,
+		add pengurus: 1,2,3,4,5,
+		edit pengurus: 1,2,3,4,5,
+		delete pengurus: 1,2,3,4,5,
+		lupa password: no auth required,
+	ranting
+		get ranting: 1,2,3,4,
+		add ranting: 1,2,3,4,
+		edit ranting: 1,2,3,4,
+		delete ranting: 1,2,3,4,
+	rayon: semua Staff yang terautentikasi punya akses CRUD
+	role 
+		get role: 1,2,3,
+		add role: 1,2,3,
+		edit role: 1,2,3,
+		delete role: 1,2,3
+	senam: semua Staff yang terautentikasi punya akses CRUD
+	session
+		get session: 1,2,3,4,5,6
+		add session: all user
+		edit session: 1,2,3,4,5,6
+		delete session: 1,2,3,4,5,6
+	siswa: semua Staff yang terautentikasi punya akses CRUD
+		login nis: no auth required
+	soal: semua akun yang terautentikasi punya akses CRUD, tapi siswa hanya bisa get data
+	teknik: semua Staff yang terautentikasi punya akses CRUD
+	ukcw: semua Staff yang terautentikasi punya akses CRUD
+	ukt hijau: semua Staff yang terautentikasi punya akses CRUD
+	ukt putih: semua Staff yang terautentikasi punya akses CRUD
+	ukt jambon: semua Staff yang terautentikasi punya akses CRUD
+	ukt: semua Staff yang terautentikasi punya akses CRUD
+	user
+		get user: 1,2,
+		add user: 1,2,
+		edit user: 1,2,3,
+		delete user: 1,2,3
+		login user: no auth required
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.post("/name_dan_ranting", Auth, verifyRoles("admin", "super admin", "admin ranting", "pengurus cabang", "pengurus ranting", "penguji"), (req,res) => {
+    const name = req.body.name;
+    const id_ranting = req.body.id_ranting;
+    siswa
+    .findAll({
+      where: {
+        name: {
+            [Op.like]: '%'+name+'%'
+          },
+        id_ranting: {
+            [Op.like]: '%'+id_ranting+'%'
+        } 
+      },
+    })
+    .then((siswa) => {
+      res.json({
+        count: siswa.length,
+        siswa: siswa,
+      });
+    })
+    .catch((error) => {
+      res.json({
+        message: error.message,
+      });
+    }); 
+})
