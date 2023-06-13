@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //import model
-const models = require("../../../models/index");
+const models = require("../../../src/models/index");
 const sambung = models.sambung;
 const detail_sambung = models.detail_sambung;
 const siswa = models.siswa;

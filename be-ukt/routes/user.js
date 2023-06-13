@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
+
 const bcrypt = require("bcrypt");
 const salt = bcrypt.genSaltSync(10);
 const { randomUUID } = require("crypto");
@@ -17,15 +18,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //import model
-const models = require("../models/index");
+const models = require("../src/models/index");
 const user = models.user;
 const ranting = models.ranting;
 
 //import auth
-const auth = require("../auth");
 const jwt = require("jsonwebtoken");
-const SECRET_KEY = "BelajarNodeJSItuMenyengankan";
 const localStorage = process.env.LOCAL_STORAGE
+const getImage = process.env.GET_IMAGE;
 //konfigurasi proses upload file
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -42,7 +42,7 @@ let upload2 = multer({ storage: storage });
 
 //endpoint get data semua user
 app.get("/", Auth, verifyRoles("super admin", "admin"),(req, res) => {
-  const imagePath = "http://localhost:8080/image/";
+  const imagePath = getImage;
 
   user
     .findAll({
@@ -73,7 +73,7 @@ app.get("/", Auth, verifyRoles("super admin", "admin"),(req, res) => {
     });
 });
 app.get("/:id", Auth, verifyRoles("super admin", "admin"),(req, res) => {
-  const imagePath = "http://localhost:8080/image/";
+  const imagePath = getImage;
   user
     .findOne({
       where:{
@@ -174,7 +174,7 @@ app.put("/:id", Auth, verifyRoles("admin", "super admin", "admin ranting", "admi
       await user
         .update(req.body.password == null ? dataNoPsw : data, { where: param })
         .then((result) => {
-          const imagePath = "http://localhost:8080/image/";
+          const imagePath = getImage;
             user
               .findOne({
                 where:{

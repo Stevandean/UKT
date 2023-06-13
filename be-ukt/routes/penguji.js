@@ -17,14 +17,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //import model
-const models = require("../models/index");
+const models = require("../src/models/index");
 const { Op } = require("sequelize");
 const penguji = models.penguji;
 
 //import auth
 const auth = require("../auth")
 const jwt = require("jsonwebtoken")
-const SECRET_KEY = "BelajarNodeJSItuMenyengankan";
 
 const localStorage = process.env.LOCAL_STORAGE
 const cabang = models.cabang;
