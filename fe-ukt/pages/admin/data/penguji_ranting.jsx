@@ -7,10 +7,14 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Modal_penguji_ranting from '../components/modal_penguji_ranting'
 import Modal_delete from '../components/modal_delete'
+import { useRouter } from 'next/router'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 const penguji_ranting = () => {
+
+    // deklarasi router
+    const router = useRouter ()
 
     // state modal
     const [showModalPengujiRanting, setShowModalPengujiRanting] = useState (false)
@@ -77,8 +81,16 @@ const penguji_ranting = () => {
         setIdPengujiRanting (selectedId)
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataPengujiRanting ()
+        isLogged ()
     }, [])
 
     return (

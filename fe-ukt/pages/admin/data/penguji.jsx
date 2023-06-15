@@ -1,21 +1,50 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import axios from 'axios'
 import Sidebar from '../components/sidebar'
 import Header from '../components/header'
 import Footer from '../components/footer'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const penguji = () => {
 
+    // deklarasi router
+    const router = useRouter ()
+
     // state
     const [role, setRole] = useState ('')
+    const [dataPenguji, setDataPenguji] = useState ([])
+
+    // function get data penguji
+    const getDataPenguji = () => {
+        const token = localStorage.getItem ('token')
+
+        axios.get (BASE_URL + `penguji`, {headers : {Authorization : `Bearer ${token}`}})
+        .then (res => {
+            setDataPenguji (res.data.data)
+        })
+        .catch (err => {
+            console.log(err.message);
+        })
+    }
 
     const getRole = () => {
         const role = JSON.parse (localStorage.getItem ('admin'))
         setRole (role)
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
+        getDataPenguji ()
         getRole ()
+        isLogged ()
     }, [])
 
     return (
@@ -78,7 +107,7 @@ const penguji = () => {
                                             </div>
 
                                             {/* data count and button add data */}
-                                            <h1 className='text-white text-4xl font-semibold tracking-wider'>1180</h1>
+                                            <h1 className='text-white text-4xl font-semibold tracking-wider'>{dataPenguji.filter (a => a.id_role === 'penguji cabang').length}</h1>
                                         </div>
                                     </Link>
                                 )
@@ -98,7 +127,7 @@ const penguji = () => {
                                             </div>
 
                                             {/* data count and button add data */}
-                                            <h1 className='text-white text-4xl font-semibold tracking-wider'>1180</h1>
+                                            <h1 className='text-white text-4xl font-semibold tracking-wider'>{dataPenguji.filter (a => a.id_role === 'penguji cabang').length}</h1>
                                         </div>
                                     </Link>
                                 )
@@ -121,7 +150,7 @@ const penguji = () => {
                                 </div>
 
                                 {/* data count and button add data */}
-                                <h1 className='text-white text-4xl font-semibold tracking-wider'>1180</h1>
+                                <h1 className='text-white text-4xl font-semibold tracking-wider'>{dataPenguji.filter (a => a.id_role === 'penguji ranting').length}</h1>
                             </div>
                         </Link>
                     </div>

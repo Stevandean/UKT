@@ -5,7 +5,6 @@ import Sidebar from '../components/sidebar'
 import Header from '../components/header'
 import Footer from '../components/footer'
 
-
 // ---- content --- //
 import Senam from './content/senam'
 import Teknik from './content/teknik'
@@ -23,6 +22,7 @@ const detail_nilai_ukt_ukcw = () => {
     // state set jenis
     const [dataEvent, setDataEvent] = useState([])
     const [active, setActive] = useState('keshan')
+    
     // function set jneis
     const onActive = (e) => {
         setActive(e)
@@ -47,6 +47,13 @@ const detail_nilai_ukt_ukcw = () => {
         activeComponent = <Sambung data={data}/>;
     } else if (active === 'keshan'){
         activeComponent = <Keshan data={data}/>;
+    }
+
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
     }
 
     
