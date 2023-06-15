@@ -166,11 +166,19 @@ const ukcw = () => {
         })
     }
 
-    useEffect(() => {
-      getSoal()
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
 
-      return () => {
-      }
+    useEffect(() => {
+        getSoal()
+        isLogged ()
+
+        return () => {
+        }
     }, [])
     
     return (

@@ -4,10 +4,14 @@ import Link from 'next/link'
 import { globalState } from '@/context/context';
 import Footer from './components/footer'
 import Modal_foto from './components/modal_foto';
+import { useRouter } from 'next/router';
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 const edit_profile = () => {
+
+    // deklarasi router
+    const router = useRouter ()
 
     // state password
     const [passwordType, setPassworrdType] = useState ('password')
@@ -105,9 +109,17 @@ const edit_profile = () => {
             })
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataAdmin ()
         getDataRanting ()
+        isLogged ()
     }, [])
 
     return (

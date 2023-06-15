@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 import Sidebar from '../components/sidebar'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import axios from 'axios'
-import { useRouter } from 'next/router'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const siswa = () => {
@@ -14,6 +14,8 @@ const siswa = () => {
 
     // state
     const [dataRanting, setDataRanting] = useState ([])
+    const [ranting, setRanting] = useState ([])
+    const [dataSiswa, setDataSiswa] = useState ([])
 
     // function get data ranting
     const getDataRanting = () => {
@@ -24,19 +26,34 @@ const siswa = () => {
             axios.get (BASE_URL + `ranting`, { headers: { Authorization: `Bearer ${token}`}})
             .then (res => {
                 setDataRanting (res.data.data)
+                setRanting (res.data.data.name)
             })
             .catch (err => {
                 console.log(err.message);
             })
         } else {
-            axios.get (BASE_URL + `ranting/${admin.id_ranting}`, { headers: { Authorization: `Bearer ${token}`}})
+            axios.get (BASE_URL + `ranting/${admin.id_ranting}`, {headers: {Authorization: `Bearer ${token}`}})
             .then (res => {
                 setDataRanting (res.data.data)
+                setRanting (res.data.data.name)
             })
             .catch (err => {
                 console.log(err.message);
             })
         }
+    }
+
+    const getSiswa = () => {
+        const admin = JSON.parse(localStorage.getItem('admin'))
+        const token = localStorage.getItem ('token')
+
+        axios.get (BASE_URL + `siswa/ranting/${dataRanting.name}`, {headers: {Authorization: `Bearer ${token}`}})
+        .then (res => {
+            setDataSiswa (res.data.data)
+        })
+        .catch (err => {
+            console.log(err.message);
+        })
     }
 
     // function go to detail siswa
@@ -45,8 +62,17 @@ const siswa = () => {
         localStorage.setItem ('ranting', JSON.stringify (item))
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataRanting ()
+        getSiswa ()
+        isLogged ()
     }, [])
 
     return (
@@ -101,7 +127,7 @@ const siswa = () => {
                                         <h1 className='text-green text-lg'>Ranting {item.name}</h1>
 
                                         {/* ranting data count and add button */}
-                                        <h1 className='text-white text-3xl font-semibold tracking-wider'>1180</h1>
+                                        <h1 className='text-white text-3xl font-semibold tracking-wider'>{dataSiswa.length}</h1>
                                     </div>
                                 </button>
                             ))}

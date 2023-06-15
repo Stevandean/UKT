@@ -8,11 +8,16 @@ import { globalState } from '@/context/context'
 import Modal_Filter from '../components/modal_filter';
 import event from '@/pages/penguji/event'
 import SocketIo from 'socket.io-client'
+import { useRouter } from 'next/router'
 const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL
 const socket = SocketIo(SOCKET_URL)
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const rekap_nilai_ukt_ukcw = () => {
+
+    // deklarasi router
+    const router = useRouter ()
+
     const [dataUkt, setDataUkt] = useState([])
 
     // state modal
@@ -47,10 +52,19 @@ const rekap_nilai_ukt_ukcw = () => {
             : number.toLocaleString('id', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
+
     useEffect(() => {
         const event = JSON.parse(localStorage.getItem('event'));
         setDataEvent(event)
         localStorage.removeItem('filterRanting')
+        isLogged ()
     }, [])
 
     useEffect(() => {
@@ -109,13 +123,28 @@ const rekap_nilai_ukt_ukcw = () => {
                                 <h1 className='text-2xl tracking-wider uppercase font-bold'>Rekap Nilai - {dataEvent.name}</h1>
                             </div>
 
-                            {/* search */}
-                            <div className="bg-purple rounded-md px-5 py-2 flex items-center gap-x-2 w-72">
-                                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M9.625 16.625C13.491 16.625 16.625 13.491 16.625 9.625C16.625 5.75901 13.491 2.625 9.625 2.625C5.75901 2.625 2.625 5.75901 2.625 9.625C2.625 13.491 5.75901 16.625 9.625 16.625Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M18.3746 18.3751L14.5684 14.5688" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                                <input className='bg-transparent placeholder:text-white placeholder:tracking-wider placeholder:text-sm w-full focus:outline-none' placeholder='Search' type="text" />
+                            {/* wrapper search and filter */}
+                            <div className="flex gap-x-2">
+
+                                {/* search */}
+                                <div className="bg-purple rounded-md px-5 py-2 flex items-center gap-x-2 w-72">
+                                    <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.625 16.625C13.491 16.625 16.625 13.491 16.625 9.625C16.625 5.75901 13.491 2.625 9.625 2.625C5.75901 2.625 2.625 5.75901 2.625 9.625C2.625 13.491 5.75901 16.625 9.625 16.625Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        <path d="M18.3746 18.3751L14.5684 14.5688" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                    </svg>
+                                    <input className='bg-transparent placeholder:text-white placeholder:tracking-wider placeholder:text-sm w-full focus:outline-none' placeholder='Search' type="text" />
+                                </div>
+
+                                {/* filter */}
+                                <button onClick={() => setModalFilter (true)} className="bg-green hover:bg-[#0ea97f] transition-all duration-300 rounded-md px-5 py-2 flex items-center gap-x-2">
+                                    
+                                    <svg width="21" height="21" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16.5 2.25H1.5L7.5 9.345V14.25L10.5 15.75V9.345L16.5 2.25Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                    </svg>
+
+                                    <h1 className='text-white'>Filter</h1>
+                                </button>
+
                             </div>
                         </div>
 
@@ -128,7 +157,7 @@ const rekap_nilai_ukt_ukcw = () => {
                                     <thead className='bg-purple sticky top-0'>
                                         <tr className='text-white text-center bg-purple'>
                                             <th className='py-3 w-[5%] border font-oswald'>Rank</th>
-                                            <th className='w-[30%] border font-oswald' >Nama <button className='mx-3 rounded-md bg-gray text-xl' onClick={() => setModalFilter(true)}>⌃</button></th>
+                                            <th className='w-[30%] border font-oswald' >Nama</th>
                                             <th className='w-[10%] border font-oswald'>Ranting</th>
                                             <th className='text-base border font-oswald'>KESHAN {jenis == 'keshan' && updown == 'upToDown'
                                                     ? <button className='rounded-md bg-gray text-lg' onClick={() => {

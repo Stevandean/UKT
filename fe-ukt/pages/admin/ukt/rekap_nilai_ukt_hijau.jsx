@@ -7,9 +7,14 @@ import Footer from '../components/footer'
 import { globalState } from '@/context/context'
 import Modal_Filter from '../components/modal_filter';
 import event from '@/pages/penguji/event'
+import { useRouter } from 'next/router'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const rekap_nilai_ukt_hijau = () => {
+
+    // deklari router
+    const router = useRouter ()
+
     const [dataUkt, setDataUkt] = useState([])
 
     // state modal
@@ -43,9 +48,17 @@ const rekap_nilai_ukt_hijau = () => {
             : number.toLocaleString('id', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect(() => {
         const event = JSON.parse(localStorage.getItem('event'));
         setDataEvent(event)
+        isLogged ()
     }, [])
 
     useEffect(() => {
