@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //import model
-const models = require('../models/index');
+const models = require('../src/models/index');
 const kunci_soal = models.kunci_soal;
 
 //endpoint ditulis disini

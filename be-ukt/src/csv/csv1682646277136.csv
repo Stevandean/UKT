@@ -1,0 +1,101 @@
+﻿no,id_event,nis,name,id_role,jenis_kelamin,jenis_latihan,peserta,tipe_ukt,id_ranting,rayon,tingkatan
+1,4,1,Dasya Buckingham,siswa,Laki laki,Privat,Privat - Laki laki,UKCW,2,Yingzai,UKCW
+2,4,2,Nicol Randell,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,La Garenne-Colombes,UKCW
+3,4,0,Arel Martindale,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Fengyan,UKCW
+4,4,280,Olympe Hamments,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Castedo,UKCW
+5,4,18,Zora Cowderay,siswa,Laki laki,Privat,Privat - Laki laki,UKCW,2,Daşoguz,UKCW
+6,4,69782,Vic Mendus,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Bulls,UKCW
+7,3,74225,Sheila Rastall,siswa,Perempuan,Privat,Privat - Perempuan,UKT Putih,2,Cusapín,Putih
+8,4,555,Olympie Doret,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Luxi,UKCW
+9,4,18,Tait Setter,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Miguel Hidalgo,UKCW
+10,1,21,Hortensia Aslum,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Jambon,2,Zaozhuang,Hitam
+11,1,2,Leicester Fairfoull,siswa,Perempuan,Privat,Privat - Perempuan,UKT Jambon,2,Bagulin,Hitam
+12,4,4,Jackelyn Edwin,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Midland,UKCW
+13,4,7,Shermy Eyrl,siswa,Laki laki,Remaja,Remaja - Laki laki,UKCW,2,Sobue,UKCW
+14,4,25,Roseanna Yoselevitch,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,København,UKCW
+15,3,6779,Colin Galbraith,siswa,Perempuan,Privat,Privat - Perempuan,UKT Putih,2,Potęgowo,Putih
+16,2,5434,Mahmoud Luffman,siswa,Laki laki,Privat,Privat - Laki laki,UKT Hijau,2,Tamaulipas,Hijau
+17,2,17,Lewiss Voelker,siswa,Laki laki,Privat,Privat - Laki laki,UKT Hijau,2,Orléans,Hijau
+18,4,721,Duffy Pirt,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Mberubu,UKCW
+19,1,30993,Isabella Dalliston,siswa,Perempuan,Privat,Privat - Perempuan,UKT Jambon,2,Jinhe,Hitam
+20,2,24,Gabrielle Joerning,siswa,Laki laki,Privat,Privat - Laki laki,UKT Hijau,2,Hengshan,Hijau
+21,4,60379,Manolo Liddle,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Bhakkar,UKCW
+22,2,390,Antoine Bedells,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Ejidal,Hijau
+23,2,20705,Sandie Bellon,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Biscucuy,Hijau
+24,2,6,Olivette Cozzi,siswa,Perempuan,Privat,Privat - Perempuan,UKT Hijau,2,Caticugan,Hijau
+25,2,58282,Bili Ousbie,siswa,Laki laki,Privat,Privat - Laki laki,UKT Hijau,2,Górki,Hijau
+26,1,584,Ruy Rameau,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,Tangquan,Hitam
+27,1,244,Odo Antrack,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Jambon,2,Lũng Hồ,Hitam
+28,3,1,Shannon Covert,siswa,Perempuan,Privat,Privat - Perempuan,UKT Putih,2,Mongaguá,Putih
+29,3,584,Lanie Teulier,siswa,Perempuan,Privat,Privat - Perempuan,UKT Putih,2,Lysekil,Putih
+30,2,2576,Templeton Radden,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Hijau,2,Nykvarn,Hijau
+31,1,630,Fionnula Camacho,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Jambon,2,Kangin,Hitam
+32,3,493,Constantine Wychard,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Putih,2,Kilifi,Putih
+33,3,81,Ambrosius Yare,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Putih,2,Alqueidão,Putih
+34,1,5342,Ilysa Stavers,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,Barra,Hitam
+35,4,887,Jessamine Borham,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Qal‘at Bīshah,UKCW
+36,1,453,Ode Chuter,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,Laiyang,Hitam
+37,4,8,Even Billingsley,siswa,Laki laki,Remaja,Remaja - Laki laki,UKCW,2,Alvaiázere,UKCW
+38,4,7372,Aila Poyzer,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Kalapagada,UKCW
+39,1,962,Louella Lerego,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,San Pedro Zacapa,Hitam
+40,1,7,Pascale Eggle,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,Gllogjan,Hitam
+41,4,701,Anestassia Alsobrook,siswa,Laki laki,Privat,Privat - Laki laki,UKCW,2,São Pedro,UKCW
+42,3,5967,Guinna Baldwin,siswa,Perempuan,Privat,Privat - Perempuan,UKT Putih,2,Pokój,Putih
+43,4,218,Carlo Vane,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Luoxiong,UKCW
+44,4,7887,Aylmer Cleef,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,San Antonio,UKCW
+45,3,13,Quinn Hurne,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Putih,2,Hanfeng,Putih
+46,2,81569,Ingar Chifney,siswa,Perempuan,Privat,Privat - Perempuan,UKT Hijau,2,Água Levada,Hijau
+47,1,13,Willamina Corteney,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Jambon,2,Lodwar,Hitam
+48,2,23,Beatrisa Jeffree,siswa,Laki laki,Privat,Privat - Laki laki,UKT Hijau,2,Tozkhurmato,Hijau
+49,3,15,Betsey Rosier,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Putih,2,Kozakai-chō,Putih
+50,2,911,Gasparo Mapham,siswa,Laki laki,Privat,Privat - Laki laki,UKT Hijau,2,Liukou,Hijau
+51,4,13378,Urbano Chadwell,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Lingbei,UKCW
+52,4,7934,Pearline Jarley,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Las Lajas,UKCW
+53,4,3123,Mackenzie Bleesing,siswa,Laki laki,Remaja,Remaja - Laki laki,UKCW,2,Yur’yevets,UKCW
+54,1,64600,Carleton Millward,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,Oepula,Hitam
+55,1,5950,Hyacinth Friese,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Jambon,2,Eydhafushi,Hitam
+56,1,8130,Gayle Troth,siswa,Perempuan,Privat,Privat - Perempuan,UKT Jambon,2,Zhongzhai,Hitam
+57,2,07,Ely Goldstein,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Abovyan,Hijau
+58,4,7818,Augustine Emer,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Sawahbaru,UKCW
+59,3,37,Farlee Lukacs,siswa,Perempuan,Privat,Privat - Perempuan,UKT Putih,2,Shuanghe,Putih
+60,1,259,Riva McArt,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Jambon,2,Mingelchaur,Hitam
+61,3,53,Idette Chilles,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Putih,2,Loudi,Putih
+62,3,9,Helenelizabeth Swales,siswa,Perempuan,Privat,Privat - Perempuan,UKT Putih,2,Nouaseur,Putih
+63,1,08,Cirstoforo Pendrill,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Jambon,2,Ngilengan,Hitam
+64,4,57482,Clio Tonsley,siswa,Laki laki,Remaja,Remaja - Laki laki,UKCW,2,Cúcuta,UKCW
+65,1,880,Kit Wimbush,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,Nador,Hitam
+66,4,27,Tillie Hubback,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Kotel’niki,UKCW
+67,2,29,Romain Ivers,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Huolongmen,Hijau
+68,4,506,Sid Wickson,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Pangkalanbuun,UKCW
+69,2,4965,Aleece Lansdown,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Nairobi,Hijau
+70,2,4,Rozamond Walters,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Tiemen,Hijau
+71,3,105,Davon Spyby,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Putih,2,Peterborough,Putih
+72,4,95,Joachim McVicker,siswa,Laki laki,Remaja,Remaja - Laki laki,UKCW,2,Pokrovskoye,UKCW
+73,1,43,Mair Jellybrand,siswa,Perempuan,Privat,Privat - Perempuan,UKT Jambon,2,Ozherel’ye,Hitam
+74,4,68,Malory Mowbray,siswa,Laki laki,Privat,Privat - Laki laki,UKCW,2,Korczyna,UKCW
+75,3,04,Horace Mitie,siswa,Perempuan,Privat,Privat - Perempuan,UKT Putih,2,Madona,Putih
+76,3,92787,Saleem Marriner,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Putih,2,Nueva Esperanza,Putih
+77,3,2987,Denna Warren,siswa,Laki laki,Privat,Privat - Laki laki,UKT Putih,2,Jiaxian Chengguanzhen,Putih
+78,2,1729,Lorianne Solleme,siswa,Perempuan,Privat,Privat - Perempuan,UKT Hijau,2,Okinawa,Hijau
+79,1,19514,Giavani Claxton,siswa,Perempuan,Privat,Privat - Perempuan,UKT Jambon,2,Zarichchya,Hitam
+80,1,56458,Spike Battams,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,København,Hitam
+81,1,709,Bobbette Hayman,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,Doumuhu,Hitam
+82,2,843,Jobyna Cowles,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,As Suqaylibīyah,Hijau
+83,3,50462,Avrom Kindon,siswa,Perempuan,Remaja,Remaja - Perempuan,UKT Putih,2,Casal,Putih
+84,2,69,Penrod De Andreis,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Mainri,Hijau
+85,4,12,Demott Tilley,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Oelaba,UKCW
+86,1,68078,Izaak Mecchi,siswa,Laki laki,Privat,Privat - Laki laki,UKT Jambon,2,Berlin,Hitam
+87,3,89395,Valentine Corrado,siswa,Laki laki,Privat,Privat - Laki laki,UKT Putih,2,Topeka,Putih
+88,4,66,Valdemar Stokes,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Katy,UKCW
+89,2,156,Aeriela Hornung,siswa,Laki laki,Privat,Privat - Laki laki,UKT Hijau,2,Tongyangdao,Hijau
+90,3,52,Loralee Fearneley,siswa,Laki laki,Privat,Privat - Laki laki,UKT Putih,2,Korolëv Stan,Putih
+91,2,4,Marji Waplinton,siswa,Perempuan,Privat,Privat - Perempuan,UKT Hijau,2,Ambarakaraka,Hijau
+92,4,4,Gavra Stive,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,North Little Rock,UKCW
+93,3,8325,Halley Mithun,siswa,Laki laki,Privat,Privat - Laki laki,UKT Putih,2,Midland,Putih
+94,2,70,Ruthi MacGilfoyle,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Shuanggang,Hijau
+95,2,4769,Orazio Haquin,siswa,Laki laki,Remaja,Remaja - Laki laki,UKT Hijau,2,Roermond,Hijau
+96,2,26,Doyle Stood,siswa,Perempuan,Privat,Privat - Perempuan,UKT Hijau,2,Vawkavysk,Hijau
+97,4,852,Gretchen Gaughan,siswa,Perempuan,Privat,Privat - Perempuan,UKCW,2,Koniaków,UKCW
+98,4,462,Charlena Peake,siswa,Perempuan,Remaja,Remaja - Perempuan,UKCW,2,Olutanga,UKCW
+99,4,4,Dame Beggan,siswa,Laki laki,Remaja,Remaja - Laki laki,UKCW,2,Karangboyo,UKCW
+100,1,49,Agnola Porrett,siswa,Perempuan,Privat,Privat - Perempuan,UKT Jambon,2,El Porvenir,Hitam

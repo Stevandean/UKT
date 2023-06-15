@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //import model
-const models = require('../../../models/index');
+const models = require('../../../src/models/index');
 const jurus_siswa = models.jurus_siswa;
 
 //endpoint ditulis disini
@@ -26,26 +26,6 @@ app.get("/", Auth, verifyRoles("admin", "super admin", "admin ranting", "admin c
                 attributes: ['name']
             }
         ]
-    })
-    .then(jurus_siswa => {
-        res.json({
-            count: jurus_siswa.length,
-            data: jurus_siswa
-        })
-    })
-    .catch(error => {
-        res.json({
-            message: error.message
-        })
-    })    
-})
-
-//endpoint get data jurus_siswa by tipe_ukt
-app.get("/:id", Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), (req,res) => {
-    jurus_siswa.findAll({
-        where: {
-            tipe_ukt: req.params.id
-        }
     })
     .then(jurus_siswa => {
         res.json({
