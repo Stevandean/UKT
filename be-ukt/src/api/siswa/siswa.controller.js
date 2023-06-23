@@ -1,6 +1,6 @@
 const fs = require("fs");
 const csv = require('csv-parser');
-const { Op } = require("sequelize");
+const { Sequelize, Op } = require("sequelize");
 const jwt = require("jsonwebtoken");
 const localStorage = process.env.LOCAL_STORAGE + "/";
 
@@ -32,6 +32,23 @@ module.exports = {
                     count: siswa.length,
                     data: siswa
                 })
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+    },
+    controllerGetCount: async (req, res) => {
+        siswa.findAll({
+            attributes: ['id_ranting', [Sequelize.fn('COUNT', Sequelize.col('id_ranting')), 'count']],
+            group: ['id_ranting']
+        })
+            .then(result => {
+                res.json({
+                    count: result.length,
+                    data: result
+                });
             })
             .catch(error => {
                 res.json({
@@ -100,7 +117,7 @@ module.exports = {
                 },
                 {
                     model: event,
-                    as: "siswa_event ",
+                    as: "siswa_event",
                     attributes: ['name'],
                     required: false
                 },

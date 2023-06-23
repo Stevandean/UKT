@@ -12,7 +12,7 @@ const modal_delete = () => {
     const {setDataAdminCabang, setDataAdminRanting} = useContext (globalState)
     const {setDataPengujiCabang, setDataPengujiRanting} = useContext (globalState)
     const {setDataPengurusCabang, setDataPengurusRanting} = useContext (globalState)
-    const {setDataSiswa, idSiswa} = useContext (globalState)
+    const {setDataSiswa, idSiswa, ranting} = useContext (globalState)
     const {action} = useContext (globalState)
     const {idAdminCabang, idAdminRanting} = useContext (globalState)
     const {idPengujiCabang, idPengujiRanting} = useContext (globalState)
@@ -99,7 +99,7 @@ const modal_delete = () => {
     
     // function get data siswa
     const getDataSiswa = () => {
-        axios.get (BASE_URL + `siswa`, { headers: { Authorization: `Bearer ${token}`}})
+        axios.get (BASE_URL + `siswa/ranting/${ranting}`, { headers: { Authorization: `Bearer ${token}`}})
         .then (res => {
             setDataSiswa (res.data.data)
         })

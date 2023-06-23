@@ -7,10 +7,14 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Modal_pengurus_ranting from '../components/modal_pengurus_ranting'
 import Modal_delete from '../components/modal_delete'
+import { useRouter } from 'next/router'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 const pengurus_ranting = () => {
+
+    // deklarasi router
+    const router = useRouter ()
 
     // state modal
     const [showModalPengurusRanting, setShowModalPengurusRanting] = useState (false)
@@ -77,8 +81,16 @@ const pengurus_ranting = () => {
         setIdPengurusRanting (selectedId)
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataPengurusRanting ()
+        isLogged ()
     }, [])
 
     return (

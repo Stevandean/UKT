@@ -16,10 +16,34 @@ module.exports = {
                 })
             })
     },
-    controllerGetByEvent: async (req, res) => {
+    controllerGetTotalPage: async (req, res) => {
+        const limit = Number(req.params.limit);
         session.findAll({
             where: {
-                id_event: req.params.event
+                id_event: req.params.id
+            },
+            attributes: ['id_session']
+        })
+            .then(result => {
+                const totalPages = Math.ceil(result.length / limit);
+                res.json({ totalPages });
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+    },
+    controllerGetByEvent: async (req, res) => {
+        const { id, page, limit } = req.params;
+        const pageNumber = Number(page);
+        const itemsPerPage = Number(limit);
+
+        const offset = (pageNumber - 1) * itemsPerPage;
+
+        session.findAll({
+            where: {
+                id_event: id
             },
             include: [
                 {
@@ -37,7 +61,10 @@ module.exports = {
                         }
                     ]
                 }
-            ]
+            ],
+
+            limit: itemsPerPage,
+            offset: offset,
         })
             .then(session => {
                 res.json({

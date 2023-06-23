@@ -1,10 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Sidebar from '../components/sidebar'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import { useRouter } from 'next/router'
 
 const keSHan = () => {
+
+    // deklarasi router
+    const router = useRouter ()
+
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
+    useEffect (() => {
+        isLogged ()
+    }, [])
 
     return (
         <>
