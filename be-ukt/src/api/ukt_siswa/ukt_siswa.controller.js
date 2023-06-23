@@ -122,6 +122,60 @@ module.exports = {
                 })
             })
     },
+    controllerStatistics: async (req, res) => {
+
+        ukt_siswa.findAll({
+            attributes: ['keshan', 'senam', 'jurus', 'fisik', 'teknik', 'sambung']
+        })
+            .then(result => {
+                const attributes = ['keshan', 'senam', 'jurus', 'fisik', 'teknik', 'sambung'];
+
+
+                // Process the data into the desired format
+                const data = []
+
+                for (let i = 0; i < 6; i++) {
+                    const subData = {}
+                    const percentages = {};
+                    const attribute = attributes[i];
+                    let redCount = 0;
+                    let yellowCount = 0;
+                    let greenCount = 0;
+                    result.map(item => {
+                        for (let b = 0; b < result.length; b++) {
+                            const value = item[attribute]
+
+                            if (value < 50) {
+                                redCount++;
+                            } else if (value > 80) {
+                                greenCount++;
+                            } else {
+                                yellowCount++;
+                            }
+                        }
+                    })
+                    percentages.red = Math.round((redCount / result.length) * 100 * 100 / result.length) / 100;
+                    percentages.yellow = Math.round((yellowCount / result.length) * 100 * 100 / result.length) / 100;
+                    percentages.green = Math.round((greenCount / result.length) * 100 * 100 / result.length) / 100;
+                    subData.name = attributes[i];
+                    subData.percentages = percentages;
+                    data.push(subData)
+                    console.log(redCount)
+                    console.log(yellowCount)
+                    console.log(greenCount)
+                }
+
+                res.json({
+                    // count: data.length,
+                    data: data
+                })
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+    },
     controllerGetByEventUkt: async (req, res) => {
         let orderCriteria = [[Sequelize.literal('(COALESCE(senam, 0) + COALESCE(jurus, 0) + COALESCE(fisik, 0) + COALESCE(teknik, 0) + COALESCE(sambung, 0) + COALESCE(keshan, 0))/6'), 'DESC']];
 
