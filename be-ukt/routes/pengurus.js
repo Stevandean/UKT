@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //import model
-const models = require('../models/index');
+const models = require('../src/models/index');
 const { sequelize, Op } = require("sequelize");
 const pengurus = models.pengurus;
 const ranting = models.ranting;

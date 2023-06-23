@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //import model
-const models = require('../models/index');
+const models = require('../src/models/index');
 const lembar_soal = models.lembar_soal;
 const ranting = models.ranting
 
