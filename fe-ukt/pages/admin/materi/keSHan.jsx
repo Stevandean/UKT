@@ -64,7 +64,7 @@ const keSHan = () => {
                     <div className="grid grid-cols-2 gap-5">
 
                         {/* card ukt jambon */}
-                        <Link href={'./ukt_jambon'} className="bg-navy hover:bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] rounded-md p-0.5">
+                        <Link href={'./keSHan/ukt_jambon'} className="bg-navy hover:bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] rounded-md p-0.5">
 
                             {/* inner bg */}
                             <div className="bg-navy p-5 rounded-md space-y-5">
@@ -83,7 +83,7 @@ const keSHan = () => {
                         </Link>
 
                         {/* card ukt hijau */}
-                        <Link href={'./ukt_hijau'} className="bg-navy hover:bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] rounded-md p-0.5">
+                        <Link href={'./keSHan/ukt_hijau'} className="bg-navy hover:bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] rounded-md p-0.5">
 
                             {/* inner bg */}
                             <div className="bg-navy p-5 rounded-md space-y-5">
@@ -102,7 +102,7 @@ const keSHan = () => {
                         </Link>
 
                         {/* card ukt putih */}
-                        <Link href={'./ukt_putih'} className="bg-navy hover:bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] rounded-md p-0.5">
+                        <Link href={'./keSHan/ukt_putih'} className="bg-navy hover:bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] rounded-md p-0.5">
 
                             {/* inner bg */}
                             <div className="bg-navy p-5 rounded-md space-y-5">

@@ -7,6 +7,7 @@ import Footer from '../components/footer'
 import { globalState } from '@/context/context'
 import Modal_Filter from '../components/modal_filter';
 import event from '@/pages/penguji/event'
+import Image from 'next/image';
 import SocketIo from 'socket.io-client'
 import { useRouter } from 'next/router'
 const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL
@@ -24,9 +25,8 @@ const rekap_nilai_ukt_ukcw = () => {
     const [dataEvent, setDataEvent] = useState([])
     const [dataRanting, setDataRanting] = useState([])
     const [modalFilter, setModalFilter] = useState(false)
-    const [go, setGo] = useState(true);
-    const [page, setPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(0);
+    const [name, setName] = useState(null);
+    const [loading, setLoading] = useState(false);
     const [jenis, setJenis] = useState('all')
     const [updown, setUpDown] = useState('upToDown')
 
@@ -37,26 +37,20 @@ const rekap_nilai_ukt_ukcw = () => {
         let form = {
             ranting: Ranting
         }
-        // console.log(Ranting);
-        axios.get(BASE_URL + `ukt_siswa/pages/${event.id_event}/` + 50, { headers: { Authorization: `Bearer ${token}` } })
+        setLoading(true);
+        await axios.post(BASE_URL + `ukt_siswa/ukt/${event.id_event}/${jenis}/${updown}`, form, { headers: { Authorization: `Bearer ${token}` } })
             .then(res => {
-                console.log(res.data.totalPages);
-                setTotalPages(res.data.totalPages)
+                console.log(res);
+                setDataUkt(res.data.data)
             })
-        if (go) {
-            await axios.post(BASE_URL + `ukt_siswa/ukt/${event.id_event}/${jenis}/${updown}/${page}/50`, form, { headers: { Authorization: `Bearer ${token}` } })
-                .then(res => {
-                    console.log(res);
-                    setDataUkt(res.data.data)
-                })
-                .catch(err => {
-                    console.log(err.message);
-                    console.log(err.response.data);
-                })
-        }
-        setGo(false)
+            .catch(err => {
+                console.log(err.message);
+                console.log(err.response.data);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }
-
     function formatNumber(number) {
         return (number % 1 === 0)
             ? number
@@ -70,60 +64,42 @@ const rekap_nilai_ukt_ukcw = () => {
         }
     }
 
-    const renderPageNumbers = () => {
-        const pages = [];
+    const getDataByName = () => {
+        const token = localStorage.getItem('token')
+        const event = JSON.parse(localStorage.getItem('event'));
+        console.log("getdatabyname")
 
-        // Generate page numbers based on the total number of pages
-        for (let i = 1; i <= totalPages; i++) {
-            if (i === 1 || i === totalPages || i === page) {
-                // Show the first, last, and current page numbers
-                pages.push(
-                    <button
-                        key={i}
-                        onClick={() => {
-                            setPage(i);
-                            setGo(true)
-                        }}
-                        className={`mx-1 p-2 rounded ${i === page ? 'bg-blue-500 text-white' : 'bg-gray-200 text-white'
-                            }`}
-                    >
-                        {i}
-                    </button>
-                );
-            } else if (
-                i >= page - 5 &&
-                i <= page + 5 &&
-                (i % 10 !== 0 || Math.abs(page - i) <= 10)
-            ) {
-                // Show the page numbers within a range of 10 from the current page
-                pages.push(
-                    <button
-                        key={i}
-                        onClick={() => {
-                            setPage(i);
-                            setGo(true)
-                        }}
-                        className={`mx-1 p-2 rounded ${i === page ? 'bg-blue-500 text-white' : 'bg-gray-200 text-white'
-                            }`}
-                    >
-                        {i}
-                    </button>
-                );
-            } else if (
-                (i === page - 10 && page > 15) ||
-                (i === page + 10 && page < totalPages - 15)
-            ) {
-                // Show a dot for every 10 numbers before or after the current page
-                pages.push(
-                    <span key={i} className="mx-1 p-2">
-                        ...
-                    </span>
-                );
-            }
+        setLoading(true);
+        axios.get(BASE_URL + `ukt_siswa/name/${name}/${event.id_event}`, { headers: { Authorization: `Bearer ${token}` } })
+            .then(res => {
+                console.log(res);
+                setDataUkt(res.data.data)
+            })
+            .catch(err => {
+                console.log(err.message);
+                console.log(err.response.data);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }
+    let timeoutId = null;
+
+    useEffect(() => {
+        console.log(name)
+        if (name != null) {
+            const delay = 500; // Adjust the delay time (in milliseconds) as per your requirement
+    
+            const timeoutId = setTimeout(() => {
+                getDataByName();
+            }, delay);
+    
+            return () => {
+                clearTimeout(timeoutId); // Clear the timeout if the effect is cleaned up before the delay
+            };
         }
+    }, [name]);
 
-        return pages;
-    };
 
 
     useEffect(() => {
@@ -136,8 +112,8 @@ const rekap_nilai_ukt_ukcw = () => {
     useEffect(() => {
         // console.log(jenis)
         console.log("updown" + updown)
-        go ? getDataUktFiltered() : []
-    }, [`${dataRanting}`, go, jenis, updown, page])
+        getDataUktFiltered()
+    }, [`${dataRanting}`, jenis, updown])
 
     useEffect(() => {
         socket.on('refreshRekap', () => {
@@ -151,9 +127,19 @@ const rekap_nilai_ukt_ukcw = () => {
     //         socket.emit('pushRekap')
     //     }, 3000)
     // }, [])
-
     return (
         <>
+            {loading
+                ?
+                <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+                    <div className='flex flex-col justify-center items-center bg-navy rounded-md p-5'>
+                        <Image src="/svg/spinner.svg" className="rounded-md" width={78} height={78} alt="Your SVG" />
+                        <h1 className='text-white text-center'>
+                            Please Wait Data Is Processed
+                        </h1>
+                    </div>
+                </div>
+                : []}
             <div className="flex font-lato">
 
                 {/* sidebar */}
@@ -197,7 +183,7 @@ const rekap_nilai_ukt_ukcw = () => {
                                         <path d="M9.625 16.625C13.491 16.625 16.625 13.491 16.625 9.625C16.625 5.75901 13.491 2.625 9.625 2.625C5.75901 2.625 2.625 5.75901 2.625 9.625C2.625 13.491 5.75901 16.625 9.625 16.625Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                         <path d="M18.3746 18.3751L14.5684 14.5688" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                     </svg>
-                                    <input className='bg-transparent placeholder:text-white placeholder:tracking-wider placeholder:text-sm w-full focus:outline-none' placeholder='Search' type="text" />
+                                    <input onChange={(e) => setName(e.target.value)} className='bg-transparent placeholder:text-white placeholder:tracking-wider placeholder:text-sm w-full focus:outline-none' placeholder='Search' type="text" />
                                 </div>
 
                                 {/* filter */}
@@ -216,7 +202,6 @@ const rekap_nilai_ukt_ukcw = () => {
                         {/* wrapper table */}
                         <div className="bg-navy rounded-md py-2 pl-3 uppercase h-[75%]">
 
-
                             <div className='overflow-y-auto h-full bg-navy'>
                                 {/* table */}
                                 <table className='w-full table-fixed'>
@@ -229,103 +214,101 @@ const rekap_nilai_ukt_ukcw = () => {
                                                 ? <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('keshan');
                                                     setUpDown('downToUp');
-                                                    setGo(true);
                                                 }}>⌄</button>
                                                 : <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('keshan');
                                                     setUpDown('upToDown');
-                                                    setGo(true);
                                                 }}>⌃</button>}</th>
                                             <th className='text-base border font-oswald'>Senam {jenis == 'senam' && updown == 'upToDown'
                                                 ? <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('senam');
                                                     setUpDown('downToUp');
-                                                    setGo(true);
+
                                                 }}>⌄</button>
                                                 : <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('senam');
                                                     setUpDown('upToDown');
-                                                    setGo(true);
+
                                                 }}>⌃</button>}</th>
                                             <th className='text-base border font-oswald'>Jurus {jenis == 'jurus' && updown == 'upToDown'
                                                 ? <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('jurus');
                                                     setUpDown('downToUp');
-                                                    setGo(true);
+
                                                 }}>⌄</button>
                                                 : <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('jurus');
                                                     setUpDown('upToDown');
-                                                    setGo(true);
+
                                                 }}>⌃</button>}</th>
                                             <th className='text-base border font-oswald'>Fisik {jenis == 'fisik' && updown == 'upToDown'
                                                 ? <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('fisik');
                                                     setUpDown('downToUp');
-                                                    setGo(true);
+
                                                 }}>⌄</button>
                                                 : <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('fisik');
                                                     setUpDown('upToDown');
-                                                    setGo(true);
+
                                                 }}>⌃</button>}</th>
                                             <th className='text-base border font-oswald'>Teknik {jenis == 'teknik' && updown == 'upToDown'
                                                 ? <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('teknik');
                                                     setUpDown('downToUp');
-                                                    setGo(true);
+
                                                 }}>⌄</button>
                                                 : <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('teknik');
                                                     setUpDown('upToDown');
-                                                    setGo(true);
+
                                                 }}>⌃</button>}</th>
                                             <th className='text-base w-[10%] border font-oswald'>Sambung {jenis == 'sambung' && updown == 'upToDown'
                                                 ? <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('sambung');
                                                     setUpDown('downToUp');
-                                                    setGo(true);
+
                                                 }}>⌄</button>
                                                 : <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('sambung');
                                                     setUpDown('upToDown');
-                                                    setGo(true);
+
                                                 }}>⌃</button>}</th>
                                             <th className='text-base border font-oswald'>Rata-rata {jenis == 'all' && updown == 'upToDown'
                                                 ? <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('all');
                                                     setUpDown('downToUp');
-                                                    setGo(true);
+
                                                 }}>⌄</button>
                                                 : <button className='rounded-md bg-gray text-lg' onClick={() => {
                                                     setJenis('all');
                                                     setUpDown('upToDown');
-                                                    setGo(true);
+
                                                 }}>⌃</button>}</th>
                                         </tr>
                                     </thead>
                                     <tbody className=''>
-                                        {dataUkt.map((item, index) => (
-                                            <tr key={index + 1} className={'text-white text-center even:bg-darkBlue border-t border-gray-100 border font-bold'}>
-                                                <td className='border-b-2 py-3 border-gray text-purple font-bold border'>{((page - 1) * 50) + index + 1}</td>
-                                                <td className='border-b-2 border-gray text-left border px-2'>{item.siswa_ukt_siswa.name} [{item.siswa_ukt_siswa.nomor_urut}]</td>
-                                                <td className='border-b-2 border-gray border'>{item.siswa_ukt_siswa.siswa_ranting.name}</td>
-                                                <td className={`border-b-2 border-gray border text-lg ${item.keshan < 50 && 'text-[#ca3030]'} ${item.keshan > 89.99 && 'text-[#7dff5d]'}`}>{(item.keshan)}</td>
-                                                <td className={`border-b-2 border-gray border text-lg ${item.senam < 50 && 'text-[#ca3030]'} ${item.senam > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.senam)}</td>
-                                                <td className={`border-b-2 border-gray border text-lg ${item.jurus < 50 && 'text-[#ca3030]'} ${item.jurus > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.jurus)}</td>
-                                                <td className={`border-b-2 border-gray border text-lg ${item.fisik < 50 && 'text-[#ca3030]'} ${item.fisik > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.fisik)}</td>
-                                                <td className={`border-b-2 border-gray border text-lg ${item.teknik < 50 && 'text-[#ca3030]'} ${item.teknik > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.teknik)}</td>
-                                                <td className={`border-b-2 border-gray border text-lg ${item.sambung < 50 && 'text-[#ca3030]'} ${item.sambung > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.sambung)}</td>
-                                                <td className={`border-b-2 border-gray border font-bold text-lg ${((item.keshan + item.senam + item.jurus + item.fisik + item.teknik + item.sambung) / 6) < 50 && 'bg-[#371b1b]'} ${((item.keshan + item.senam + item.jurus + item.fisik + item.teknik + item.sambung) / 6) > 89.99 && 'bg-[#1f371b]'} `}>
-                                                    {((item.keshan + item.senam + item.jurus + item.fisik + item.teknik + item.sambung) / 6).toLocaleString('id', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}
-                                                </td>
-                                            </tr>
-                                        ))}
+                                        {
+                                            dataUkt?.map((item, index) => (
+                                                <tr key={index + 1} className={'text-white text-center even:bg-darkBlue border-t border-gray-100 border font-bold'}>
+                                                    <td className='border-b-2 py-3 border-gray text-purple font-bold border'>{index + 1}</td>
+                                                    <td className='border-b-2 border-gray text-left border px-2'>{item.siswa_ukt_siswa.name} [{item.siswa_ukt_siswa.nomor_urut}]</td>
+                                                    <td className='border-b-2 border-gray border'>{item.siswa_ukt_siswa.siswa_ranting.name}</td>
+                                                    <td className={`border-b-2 border-gray border text-lg ${item.keshan < 50 && 'text-[#ca3030]'} ${item.keshan > 89.99 && 'text-[#7dff5d]'}`}>{(item.keshan)}</td>
+                                                    <td className={`border-b-2 border-gray border text-lg ${item.senam < 50 && 'text-[#ca3030]'} ${item.senam > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.senam)}</td>
+                                                    <td className={`border-b-2 border-gray border text-lg ${item.jurus < 50 && 'text-[#ca3030]'} ${item.jurus > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.jurus)}</td>
+                                                    <td className={`border-b-2 border-gray border text-lg ${item.fisik < 50 && 'text-[#ca3030]'} ${item.fisik > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.fisik)}</td>
+                                                    <td className={`border-b-2 border-gray border text-lg ${item.teknik < 50 && 'text-[#ca3030]'} ${item.teknik > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.teknik)}</td>
+                                                    <td className={`border-b-2 border-gray border text-lg ${item.sambung < 50 && 'text-[#ca3030]'} ${item.sambung > 89.99 && 'text-[#7dff5d]'}`}>{formatNumber(item.sambung)}</td>
+                                                    <td className={`border-b-2 border-gray border font-bold text-lg ${((item.keshan + item.senam + item.jurus + item.fisik + item.teknik + item.sambung) / 6) < 50 && 'bg-[#371b1b]'} ${((item.keshan + item.senam + item.jurus + item.fisik + item.teknik + item.sambung) / 6) > 89.99 && 'bg-[#1f371b]'} `}>
+                                                        {((item.keshan + item.senam + item.jurus + item.fisik + item.teknik + item.sambung) / 6).toLocaleString('id', { minimumFractionDigits: 1, maximumFractionDigits: 2 })}
+                                                    </td>
+                                                </tr>
+                                            )
+                                            )
+                                        }
                                     </tbody>
                                 </table>
-                            </div>
-                            <div className="flex justify-center mt-5">
-                                {renderPageNumbers()}
                             </div>
                         </div>
 

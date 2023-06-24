@@ -20,6 +20,7 @@ const {
     controllerStatisticsRanting,
     controllerStatisticsCabang,
     controllerGetTotalPage,
+    controllerGetByName,
 } = require('./ukt_siswa.controller');
 
 
@@ -30,9 +31,10 @@ router.get('/pages/:id/:limit', Auth, verifyRoles("admin", "super admin", "admin
 router.get('/statistic', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerStatistics )
 router.get('/statistic/ranting/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerStatisticsRanting )
 router.get('/statistic/cabang/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerStatisticsCabang )
-router.post('/ukt/:event/:jenis/:updown/:page/:limit', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetByEventFiltered )
+router.post('/ukt/:event/:jenis/:updown', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetByEventFiltered )
 router.get('/ukt/:event/:ukt', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetByEventUkt )
 router.get('/siswa/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting", "siswa"), controllerGetByIdSiswa )
+router.get('/name/:id/:event', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetByName )
 router.post('/ukt/:event', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"),controllerGetByEvent )
 router.post('/', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting", "siswa"), controllerAdd )
 router.put('/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting", "siswa"), controllerEdit )

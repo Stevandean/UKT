@@ -37,14 +37,9 @@ module.exports = {
             })
     },
     controllerGetByEventFiltered: async (req, res) => {
-        const { jenis, updown, page, limit } = req.params;
+        const { jenis, updown } = req.params;
         const rantings = req.body.ranting || ['BENDUNGAN', 'DONGKO', 'DURENAN', 'GANDUSARI', 'KAMPAK', 'KARANGAN', 'MUNJUNGAN', 'PANGGUL', 'POGALAN', 'PULE', 'SURUH', 'TRENGGALEK', 'TUGU', 'WATULIMO']
         let orderCriteria = [];
-        console.log(page)
-        console.log(limit)
-
-        const pageNumber = Number(page); // Replace with the actual 
-        const itemsPerPage = Number(limit); // 
 
         switch (jenis) {
             case 'senam':
@@ -76,10 +71,6 @@ module.exports = {
                 res.status(400).send('Invalid jenis value');
                 return;
         }
-        // const page = page // Get the page number from the request query parameter (default: 1)
-        // const limit = limit // Get the limit (number of items per page) from the request query parameter (default: 10)
-        const offset = (pageNumber - 1) * itemsPerPage; // Calculate the offset based on the page number and limit
-
         ukt_siswa.findAll({
             include: [
                 {
@@ -88,7 +79,7 @@ module.exports = {
                     attributes: ['name', 'tingkatan', 'nomor_urut'],
                     where: {
                         id_ranting: {
-                            [Op.in]: rantings   
+                            [Op.in]: rantings
                         }
                     },
                     include: [
@@ -104,8 +95,6 @@ module.exports = {
                 id_event: req.params.event,
             },
             order: orderCriteria,
-            limit: itemsPerPage,
-            offset: offset
         })
             .then(ukt_siswa => {
                 res.json({
@@ -120,7 +109,7 @@ module.exports = {
             });
     },
     controllerGetByEvent: async (req, res) => {
-        const rantings = req.body.ranting || []
+        const rantings = req.body.ranting || ['BENDUNGAN', 'DONGKO', 'DURENAN', 'GANDUSARI', 'KAMPAK', 'KARANGAN', 'MUNJUNGAN', 'PANGGUL', 'POGALAN', 'PULE', 'SURUH', 'TRENGGALEK', 'TUGU', 'WATULIMO']
         ukt_siswa.findAll({
             include: [
                 {
@@ -438,6 +427,40 @@ module.exports = {
             .then(ukt_siswa => {
                 res.json({
                     data: ukt_siswa
+                })
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+    },
+    controllerGetByName: async (req, res) => {
+        ukt_siswa.findAll({
+            include: [
+                {
+                    model: models.siswa,
+                    as: "siswa_ukt_siswa",
+                    attributes: ['name','tingkatan','nomor_urut'],
+                    include: [
+                        {
+                            model: models.ranting,
+                            as: "siswa_ranting",
+                            attributes: ['name']
+                        }
+                    ]
+                }
+            ],
+            where: {
+                id_event: req.params.event,
+                "$siswa_ukt_siswa.name$": {
+                    [Op.like]: `%${req.params.id}%`
+                },
+            },  
+        })
+            .then(result => {
+                res.json({
+                    data: result
                 })
             })
             .catch(error => {
