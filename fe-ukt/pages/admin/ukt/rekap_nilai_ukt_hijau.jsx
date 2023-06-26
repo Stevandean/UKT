@@ -18,7 +18,7 @@ const rekap_nilai_ukt_ukt_hijau = () => {
 
     // deklarasi router
     const router = useRouter()
-
+    
     const [dataUkt, setDataUkt] = useState([])
 
     // state modal
@@ -101,6 +101,13 @@ const rekap_nilai_ukt_ukt_hijau = () => {
     }, [name]);
 
 
+
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
 
     useEffect(() => {
         const event = JSON.parse(localStorage.getItem('event'));

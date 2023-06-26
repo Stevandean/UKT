@@ -100,8 +100,6 @@ const rekap_nilai_ukt_ukt_jambon = () => {
         }
     }, [name]);
 
-
-
     useEffect(() => {
         const event = JSON.parse(localStorage.getItem('event'));
         setDataEvent(event)

@@ -100,13 +100,11 @@ const rekap_nilai_ukt_ukcw = () => {
         }
     }, [name]);
 
-
-
     useEffect(() => {
         const event = JSON.parse(localStorage.getItem('event'));
         setDataEvent(event)
         localStorage.removeItem('filterRanting')
-        isLogged()
+        isLogged ()
     }, [])
 
     useEffect(() => {

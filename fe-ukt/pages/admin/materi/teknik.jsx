@@ -26,6 +26,7 @@ const teknik = () => {
     const putih = 'UKT Putih';
     const ukcw = 'UKCW';
     // const url = `/detail_teknik?query=${query}`;
+
     return (
         <>
             <div className="flex font-lato">
