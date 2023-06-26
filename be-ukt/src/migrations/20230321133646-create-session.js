@@ -25,12 +25,26 @@ module.exports = {
           key: "id_siswa"
         }
       },
+      id_event: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: "event",
+          key: "id_event"
+        }
+      },
       nilai: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
       waktu_pengerjaan: {
         type: Sequelize.INTEGER
+      },
+      start: {
+        type: Sequelize.DATE
+      },
+      finish: {
+        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

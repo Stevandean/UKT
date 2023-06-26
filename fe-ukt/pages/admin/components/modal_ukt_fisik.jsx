@@ -109,7 +109,8 @@ const modal_ukt_fisik = () => {
             .then(res => {
                 setShowModalUktFisik(false)
                 getDataStandartFisik()
-                console.log(res.data.msg);
+                console.log(res.data.message);
+                console.log(res);
             })
             .catch(err => {
                 console.log(err.message);

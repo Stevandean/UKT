@@ -26,7 +26,7 @@ const modal_siswa = () => {
     // function get data siswa
     const getDataSiswa = () => {
         const token = localStorage.getItem ('token')
-        axios.get (BASE_URL + `siswa`, { headers: { Authorization: `Bearer ${token}`}})
+        axios.get (BASE_URL + `siswa/ranting/${ranting}`, { headers: { Authorization: `Bearer ${token}`}})
         .then (res => {
             setDataSiswa (res.data.data)
         })

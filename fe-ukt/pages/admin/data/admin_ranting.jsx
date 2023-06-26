@@ -7,10 +7,14 @@ import Footer from '../components/footer'
 import Modal_admin_ranting from '../components/modal_admin_ranting'
 import Modal_delete from '../components/modal_delete'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 const admin_ranting = () => {
+
+    // deklarasi router
+    const router = useRouter ()
 
     // state modal
     const [showModalAdminRanting, setShowModalAdminRanting] = useState (false)
@@ -75,9 +79,17 @@ const admin_ranting = () => {
         setAction ('deleteAdminRanting')
         setIdAdminRanting (selectedId)
     }
+
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
     
     useEffect (() => {
         getDataAdminRanting ()
+        isLogged ()
     }, [])
 
     return (

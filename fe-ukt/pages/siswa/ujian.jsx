@@ -231,7 +231,10 @@ const ujian = () => {
                     console.log(error.message);
                 })
         }
+        console.log("data :" + data.length);
+        console.log("selected :" + selectedOptions.length);
         console.log("benar :" + benar);
+        console.log("salah :" + salah);
         if (data.length === benar + salah) {
             postScore(benar);
         }
@@ -254,6 +257,7 @@ const ujian = () => {
                 }, { headers: { Authorization: `Bearer ${token}` } })
                     .then(res => {
                         // console.log(res);
+                        console.log('semua ini akan berakhir')
                         socket.emit('pushRekap')
                         Logout()
                     })

@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //import model
-const models = require('../models/index');
+const models = require('../src/models/index');
 const event = models.event;
 
 //endpoint ditulis disini

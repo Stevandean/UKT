@@ -79,10 +79,6 @@ const modal_admin_ranting = () => {
         }
     }
 
-    useEffect (() => {
-        getToken()
-    }, [])
-
     return (
         <>
         {showModalAdminRanting ? (

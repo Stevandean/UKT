@@ -7,10 +7,14 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Modal_admin_cabang from '../components/modal_admin_cabang'
 import Modal_delete from '../components/modal_delete'
+import { useRouter } from 'next/router'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 const admin_cabang = () => {
+
+    // deklarasi router
+    const router = useRouter()
 
     // state modal
     const [showModalAdminCabang, setShowModalAdminCabang] = useState (false)
@@ -40,6 +44,7 @@ const admin_cabang = () => {
         .catch (err => {
             console.log(err.message);
         })
+        console.log (BASE_URL + `user`);
     }
 
     // function modal add
@@ -80,8 +85,16 @@ const admin_cabang = () => {
         setIdAdminCabang (selectedId)
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataAdminCabang()
+        isLogged ()
     }, [])
 
     return (
