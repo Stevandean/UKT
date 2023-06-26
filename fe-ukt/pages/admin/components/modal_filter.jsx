@@ -103,9 +103,6 @@ const Modal_Filter = (props) => {
     useEffect(() => {
         getData()
     }, [])
-    useEffect(() => {
-        // console.log(dataRanting)
-    }, [dataRanting])
 
     useEffect(() => {
     }, [selectedButton])

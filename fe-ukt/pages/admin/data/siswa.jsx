@@ -23,10 +23,10 @@ const siswa = () => {
         const token = localStorage.getItem ('token')
 
         if (admin.id_role == 'admin cabang' || admin.id_role == 'super admin') {
-            axios.get (BASE_URL + `ranting`, { headers: { Authorization: `Bearer ${token}`}})
+            axios.get (BASE_URL + `siswa/count`, { headers: { Authorization: `Bearer ${token}`}})
             .then (res => {
                 setDataRanting (res.data.data)
-                setRanting (res.data.data.name)
+                setRanting (res.data.data.id_ranting)
             })
             .catch (err => {
                 console.log(err.message);
@@ -47,7 +47,7 @@ const siswa = () => {
         const admin = JSON.parse(localStorage.getItem('admin'))
         const token = localStorage.getItem ('token')
 
-        axios.get (BASE_URL + `siswa/ranting/${dataRanting.name}`, {headers: {Authorization: `Bearer ${token}`}})
+        axios.get (BASE_URL + `siswa/ranting/${dataRanting.id_ranting}`, {headers: {Authorization: `Bearer ${token}`}})
         .then (res => {
             setDataSiswa (res.data.data)
         })
@@ -58,7 +58,7 @@ const siswa = () => {
 
     // function go to detail siswa
     const goToDetailSiswa = (item) => {
-        router.push ('./' + item.name)
+        router.push ('./' + item.id_ranting)
         localStorage.setItem ('ranting', JSON.stringify (item))
     }
 
@@ -118,16 +118,16 @@ const siswa = () => {
                             
                             {/* card ranting */}
                             {dataRanting.map ((item, index) => (
-                                <button onClick={() => goToDetailSiswa (item)} key={index + 1} href={'./' + item.name} className="bg-navy hover:bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] rounded-md p-0.5">
+                                <button onClick={() => goToDetailSiswa (item)} key={index + 1} href={'./' + item.id_ranting} className="bg-navy hover:bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] rounded-md p-0.5">
                                     
                                     {/* inner bg */}
                                     <div className="bg-navy p-5 rounded-md space-y-5">
 
                                         {/* ranting name */}
-                                        <h1 className='text-green text-lg'>Ranting {item.name}</h1>
+                                        <h1 className='text-green text-lg'>Ranting {item.id_ranting}</h1>
 
                                         {/* ranting data count and add button */}
-                                        <h1 className='text-white text-3xl font-semibold tracking-wider'>{dataSiswa.length}</h1>
+                                        <h1 className='text-white text-3xl font-semibold tracking-wider'>{item.count}</h1>
                                     </div>
                                 </button>
                             ))}
