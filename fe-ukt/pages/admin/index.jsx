@@ -23,8 +23,8 @@ const ChartBar = ({ name, percentages }) => {
             <div className="w-1/4">
                 <span
                     // className={` ${
-                    //     animationStarted ? '' : 'animate-opacity-from-left text-white'
-                    // } ' text-white text-lg font-semibold tracking-wider'`}
+                    //     animationStarted ? '' : 'animate-slide-in-right transition-opacity duration-3000 text-white'
+                    // } 'text-white text-lg font-semibold tracking-wider'`}
                     className="text-white text-lg font-semibold tracking-wider"
                 >{name}
                 </span>
@@ -189,7 +189,7 @@ const index = () => {
                         <h1 className='text-2xl tracking-wider uppercase font-bold'>Dashboard</h1>
 
                         {/* download button */}
-                        <div className="bg-purple rounded-md px-5 py-2 flex items-center gap-x-2 w-48 justify-center">
+                        <div className="bg-purple rounded-md px-5 py-2 flex items-center gap-x-2">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M15.75 11.25V14.25C15.75 14.6478 15.592 15.0294 15.3107 15.3107C15.0294 15.592 14.6478 15.75 14.25 15.75H3.75C3.35218 15.75 2.97064 15.592 2.68934 15.3107C2.40804 15.0294 2.25 14.6478 2.25 14.25V11.25" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                 <path d="M5.25 7.5L9 11.25L12.75 7.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -286,10 +286,6 @@ const index = () => {
                         {data.map((item, index) => (
                             <ChartBar key={index} name={item.name} percentages={item.percentages} />
                         ))}
-                    </div>
-                    <div className="bg-navy p-7 rounded-lg space-y-4">
-                        <h1 className='text-center text-white text-3xl font-semibold tracking-wider'>Catatan</h1>
-                        <textarea className='w-full rounded-md p-2 text-xl bg-gray text-white' name="" id="" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 {/* akhir konten utama */}
