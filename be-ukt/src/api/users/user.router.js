@@ -36,7 +36,7 @@ const {
 
 const verifyRoles = require("../../middleware/verifyRoles")
 
-router.get('/', verifyRoles("super admin", "admin"), controllerGetAll )
+router.get('/', Auth, verifyRoles("super admin", "admin"), controllerGetAll )
 router.get('/:id', Auth, verifyRoles("super admin", "admin"), controllerGetById )
 router.post('/', Auth, verifyRoles("super admin", "admin"), upload2.single("foto"), controllerAdd )
 router.post('/niw', Auth, verifyRoles("admin", "super admin", "admin ranting"), controllerNiw )

@@ -29,7 +29,34 @@ module.exports = {
                 })
             })
     },
+    controllerGetTotalPage: async (req, res) => {
+        const limit = Number(req.params.limit);
+        fisik.findAll({
+            where: {
+                id_event: req.params.id
+            },
+            attributes: ['id_fisik']
+        })
+            .then(result => {
+                const totalPages = Math.ceil(result.length / limit);
+                res.json({ totalPages });
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+    },
     controllerGetByEvent: async (req, res) => {
+        const { id, page, limit } = req.params;
+        const pageNumber = Number(page); 
+        const itemsPerPage = Number(limit);
+
+        const offset = (pageNumber - 1) * itemsPerPage;
+
+        console.log(pageNumber)
+        console.log(itemsPerPage);
+
         fisik.findAll({
             include: [
                 {
@@ -44,8 +71,10 @@ module.exports = {
                 }
             ],
             where: {
-                id_event: req.params.id
-            }
+                id_event: id
+            },
+            limit: itemsPerPage, 
+            offset: offset 
         })
             .then(fisik => {
                 res.json({

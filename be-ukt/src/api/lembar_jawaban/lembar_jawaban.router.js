@@ -8,20 +8,20 @@ router.use(bodyParser.urlencoded({ extended: true }));
 const Auth = require('../../middleware/Auth');
 
 const {
-    controllerGetAll,
+    controllerGetByIdSession,
     controllerAdd,
     controllerEdit,
-    controllerDelete,
+    controllerDeleteByIdSession,
     controllerCheckAnswer,
 } = require('./lembar_jawaban.controller');
 
 
 const verifyRoles = require("../../middleware/verifyRoles")
 
-router.get('/', Auth, verifyRoles('siswa'), controllerGetAll)
-router.get('/', Auth, verifyRoles('siswa'), controllerCheckAnswer)
+router.get('/session/:id', Auth, verifyRoles('siswa'), controllerGetByIdSession)
+router.post('/ceksoal', Auth, verifyRoles('siswa'), controllerCheckAnswer)
 router.post('/', Auth, verifyRoles('siswa'), controllerAdd)
-router.put('/:id', Auth, verifyRoles('siswa'), controllerEdit)
-router.delete('/:id', Auth, verifyRoles('siswa'), controllerDelete)
+router.put('/', Auth, verifyRoles('siswa'), controllerEdit)
+router.delete('/session/:id', Auth, verifyRoles('siswa'), controllerDeleteByIdSession)
 
 module.exports = router;

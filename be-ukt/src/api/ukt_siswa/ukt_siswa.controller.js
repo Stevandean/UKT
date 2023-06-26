@@ -1,7 +1,7 @@
 const models = require('../../models/index');
 const ukt_siswa = models.ukt_siswa;
 
-const { Op } = require("sequelize");
+const { Sequelize, Op, or } = require("sequelize");
 
 module.exports = {
     controllerGetAll: async (req, res) => {
@@ -18,8 +18,27 @@ module.exports = {
                 })
             })
     },
+    controllerGetTotalPage: async (req, res) => {
+        const limit = Number(req.params.limit);
+        ukt_siswa.findAll({
+            where: {
+                id_event: req.params.id
+            },
+            attributes: ['id_ukt_siswa']
+        })
+            .then(result => {
+                const totalPages = Math.ceil(result.length / limit);
+                res.json({ totalPages });
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+    },
     controllerGetByEventFiltered: async (req, res) => {
         const { jenis, updown } = req.params;
+        const rantings = req.body.ranting || ['BENDUNGAN', 'DONGKO', 'DURENAN', 'GANDUSARI', 'KAMPAK', 'KARANGAN', 'MUNJUNGAN', 'PANGGUL', 'POGALAN', 'PULE', 'SURUH', 'TRENGGALEK', 'TUGU', 'WATULIMO']
         let orderCriteria = [];
 
         switch (jenis) {
@@ -57,7 +76,12 @@ module.exports = {
                 {
                     model: models.siswa,
                     as: "siswa_ukt_siswa",
-                    attributes: ['name', 'tingkatan', "nomor_urut"],
+                    attributes: ['name', 'tingkatan', 'nomor_urut'],
+                    where: {
+                        id_ranting: {
+                            [Op.in]: rantings
+                        }
+                    },
                     include: [
                         {
                             model: models.ranting,
@@ -70,22 +94,22 @@ module.exports = {
             where: {
                 id_event: req.params.event,
             },
-            order: orderCriteria
+            order: orderCriteria,
         })
             .then(ukt_siswa => {
                 res.json({
                     count: ukt_siswa.length,
                     data: ukt_siswa
-                })
+                });
             })
             .catch(error => {
                 res.json({
                     message: error.message
-                })
-            })
+                });
+            });
     },
     controllerGetByEvent: async (req, res) => {
-        const rantings = req.body.ranting || []
+        const rantings = req.body.ranting || ['BENDUNGAN', 'DONGKO', 'DURENAN', 'GANDUSARI', 'KAMPAK', 'KARANGAN', 'MUNJUNGAN', 'PANGGUL', 'POGALAN', 'PULE', 'SURUH', 'TRENGGALEK', 'TUGU', 'WATULIMO']
         ukt_siswa.findAll({
             include: [
                 {
@@ -131,9 +155,10 @@ module.exports = {
                 const attributes = ['keshan', 'senam', 'jurus', 'fisik', 'teknik', 'sambung'];
 
 
-                // Process the data into the desired format
                 const data = []
-
+                let allRedCount = 0;
+                let allYellowCount = 0;
+                let allGreenCount = 0;
                 for (let i = 0; i < 6; i++) {
                     const subData = {}
                     const percentages = {};
@@ -146,10 +171,13 @@ module.exports = {
                             const value = item[attribute]
 
                             if (value < 50) {
+                                allRedCount++;
                                 redCount++;
                             } else if (value > 80) {
+                                allGreenCount++;
                                 greenCount++;
                             } else {
+                                allYellowCount++;
                                 yellowCount++;
                             }
                         }
@@ -160,10 +188,16 @@ module.exports = {
                     subData.name = attributes[i];
                     subData.percentages = percentages;
                     data.push(subData)
-                    console.log(redCount)
-                    console.log(yellowCount)
-                    console.log(greenCount)
                 }
+                const average = {}
+                const percentages = {}
+                percentages.red = Math.round((allRedCount / result.length) * 100 * 100 / result.length / 6) / 100;
+                percentages.yellow = Math.round((allYellowCount / result.length) * 100 * 100 / result.length / 6) / 100;
+                percentages.green = Math.round((allGreenCount / result.length) * 100 * 100 / result.length / 6) / 100;
+
+                average.name = 'rata - rata';
+                average.percentages = percentages;
+                data.push(average);
 
                 res.json({
                     // count: data.length,
@@ -175,6 +209,177 @@ module.exports = {
                     message: error.message
                 })
             })
+    },
+    controllerStatisticsRanting: async (req, res) => {
+        const attributes = ['keshan', 'senam', 'jurus', 'fisik', 'teknik', 'sambung']
+        const param = req.params.id
+
+        ukt_siswa.findAll({
+            attributes: attributes,
+            include: [
+                {
+                    model: models.siswa,
+                    as: "siswa_ukt_siswa",
+                    attributes: ['id_ranting'],
+                }
+            ],
+            where: {
+                "$siswa_ukt_siswa.id_ranting$": param
+            }
+        })
+            .then(result => {
+                const data = []
+                let allRedCount = 0;
+                let allYellowCount = 0;
+                let allGreenCount = 0;
+                for (let i = 0; i < 6; i++) {
+                    const subData = {}
+                    const percentages = {};
+                    const attribute = attributes[i];
+                    let redCount = 0;
+                    let yellowCount = 0;
+                    let greenCount = 0;
+                    result.map(item => {
+                        for (let b = 0; b < result.length; b++) {
+                            const value = item[attribute]
+
+                            if (value < 50) {
+                                allRedCount++;
+                                redCount++;
+                            } else if (value > 80) {
+                                allGreenCount++;
+                                greenCount++;
+                            } else {
+                                allYellowCount++;
+                                yellowCount++;
+                            }
+                        }
+                    })
+                    percentages.red = Math.round((redCount / result.length) * 100 * 100 / result.length) / 100;
+                    percentages.yellow = Math.round((yellowCount / result.length) * 100 * 100 / result.length) / 100;
+                    percentages.green = Math.round((greenCount / result.length) * 100 * 100 / result.length) / 100;
+                    subData.name = attributes[i];
+                    subData.percentages = percentages;
+                    data.push(subData)
+                }
+                const average = {}
+                const percentages = {}
+                percentages.red = Math.round((allRedCount / result.length) * 100 * 100 / result.length / 6) / 100;
+                percentages.yellow = Math.round((allYellowCount / result.length) * 100 * 100 / result.length / 6) / 100;
+                percentages.green = Math.round((allGreenCount / result.length) * 100 * 100 / result.length / 6) / 100;
+
+                average.name = 'rata - rata';
+                average.percentages = percentages;
+                data.push(average);
+
+                res.json({
+                    // count: data.length,
+                    data: data
+                })
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+    },
+    controllerStatisticsCabang: async (req, res) => {
+        const attributes = ['keshan', 'senam', 'jurus', 'fisik', 'teknik', 'sambung']
+        const param = req.params.id
+        const cabang = models.cabang;
+        cabang.findOne({
+            include: [
+                {
+                    model: models.ranting,
+                    as: "cabang_ranting",
+                    attributes: ['id_ranting']
+                }
+            ],
+            where: {
+                id_cabang: param
+            }
+        })
+            .then(result => {
+                const data = []
+                for (let i = 0; i < result.cabang_ranting.length; i++) {
+                    data.push(result.cabang_ranting[i].id_ranting)
+                }
+                // console.log(result.cabang_ranting.id_ranting);
+                ukt_siswa.findAll({
+                    attributes: attributes,
+                    include: [
+                        {
+                            model: models.siswa,
+                            as: "siswa_ukt_siswa",
+                            attributes: ['id_ranting'],
+                            where: {
+                                id_ranting: data
+                            }
+                        }
+                    ],
+                })
+                    .then(result => {
+                        // Process the data into the desired format
+                        const data = [];
+                        let allRedCount = 0;
+                        let allYellowCount = 0;
+                        let allGreenCount = 0;
+                        for (let i = 0; i < 6; i++) {
+                            const subData = {};
+                            const percentages = {};
+                            const attribute = attributes[i];
+                            let redCount = 0;
+                            let yellowCount = 0;
+                            let greenCount = 0;
+                            result.map(item => {
+                                for (let b = 0; b < result.length; b++) {
+                                    const value = item[attribute];
+                                    if (value < 50) {
+                                        allRedCount++;
+                                        redCount++;
+                                    } else if (value > 80) {
+                                        allGreenCount++;
+                                        greenCount++;
+                                    } else {
+                                        allYellowCount++;
+                                        yellowCount++;
+                                    }
+                                }
+                            });
+                            percentages.red = Math.round((redCount / result.length) * 100 * 100 / result.length) / 100;
+                            percentages.yellow = Math.round((yellowCount / result.length) * 100 * 100 / result.length) / 100;
+                            percentages.green = Math.round((greenCount / result.length) * 100 * 100 / result.length) / 100;
+                            subData.name = attributes[i];
+                            subData.percentages = percentages;
+                            subData.average = (redCount + yellowCount + greenCount) / 3; // Calculate the average
+                            data.push(subData);
+                        }
+                        const average = {}
+                        const percentages = {}
+                        percentages.red = Math.round((allRedCount / result.length) * 100 * 100 / result.length / 6) / 100;
+                        percentages.yellow = Math.round((allYellowCount / result.length) * 100 * 100 / result.length / 6) / 100;
+                        percentages.green = Math.round((allGreenCount / result.length) * 100 * 100 / result.length / 6) / 100;
+
+                        average.name = 'rata - rata';
+                        average.percentages = percentages;
+                        data.push(average);
+                        res.json({
+                            // count: data.length,
+                            data: data
+                        })
+                    })
+                    .catch(error => {
+                        res.json({
+                            message: error.message
+                        })
+                    })
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+
     },
     controllerGetByEventUkt: async (req, res) => {
         let orderCriteria = [[Sequelize.literal('(COALESCE(senam, 0) + COALESCE(jurus, 0) + COALESCE(fisik, 0) + COALESCE(teknik, 0) + COALESCE(sambung, 0) + COALESCE(keshan, 0))/6'), 'DESC']];
@@ -222,6 +427,40 @@ module.exports = {
             .then(ukt_siswa => {
                 res.json({
                     data: ukt_siswa
+                })
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+    },
+    controllerGetByName: async (req, res) => {
+        ukt_siswa.findAll({
+            include: [
+                {
+                    model: models.siswa,
+                    as: "siswa_ukt_siswa",
+                    attributes: ['name','tingkatan','nomor_urut'],
+                    include: [
+                        {
+                            model: models.ranting,
+                            as: "siswa_ranting",
+                            attributes: ['name']
+                        }
+                    ]
+                }
+            ],
+            where: {
+                id_event: req.params.event,
+                "$siswa_ukt_siswa.name$": {
+                    [Op.like]: `%${req.params.id}%`
+                },
+            },  
+        })
+            .then(result => {
+                res.json({
+                    data: result
                 })
             })
             .catch(error => {

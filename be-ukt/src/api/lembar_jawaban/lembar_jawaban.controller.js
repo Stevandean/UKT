@@ -2,7 +2,7 @@ const models = require('../../models/index');
 const lembar_jawaban = models.lembar_jawaban;
 
 module.exports = {
-    controllerGetAll: async (req, res) => {
+    controllerGetByIdSession: async (req, res) => {
         let data = {
             id_session: req.params.id,
         }
@@ -93,7 +93,7 @@ module.exports = {
             })
         })
     },
-    controllerDelete: async (req, res) => {
+    controllerDeleteByIdSession: async (req, res) => {
         let param = {
             id_session: req.params.id,
         }
