@@ -1,22 +1,51 @@
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../components/sidebar'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import axios from 'axios'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import Link from 'next/link'
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const admin = () => {
 
+    // deklarasi router
+    const router = useRouter ()
+
     // state
     const [role, setRole] = useState ([])
+    const [dataAdmin, setDataAdmin] = useState ([])
 
+    // function get data admin
+    const getDataAdmin = () => {
+        const token = localStorage.getItem ('token')
+        axios.get (BASE_URL + `user`, { headers: { Authorization: `Bearer ${token}`}})
+        .then (res => {
+            setDataAdmin (res.data.data)
+        })
+        .catch (err => {
+            console.log(err.message);
+        })
+    }
+
+    // function get role from localstorage
     const getRole = () => {
         const role = JSON.parse (localStorage.getItem ('admin'))
         setRole (role)
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push  ('/admin/login')
+        }
+    }
+
     // state login
     useEffect (() => {
+        getDataAdmin ()
         getRole ()
+        isLogged ()
     }, [])
 
     return (
@@ -89,7 +118,7 @@ const admin = () => {
                                             </div>
 
                                             {/* data count and button add data */}
-                                            <h1 className='text-white text-4xl font-semibold tracking-wider'>1180</h1>
+                                            <h1 className='text-white text-4xl font-semibold tracking-wider'>{dataAdmin.filter (a => a.id_role === 'admin cabang').length}</h1>
                                         </div>
                                     </Link>
                                 )
@@ -120,7 +149,7 @@ const admin = () => {
                                             </div>
 
                                             {/* data count and button add data */}
-                                            <h1 className='text-white text-4xl font-semibold tracking-wider'>1180</h1>
+                                            <h1 className='text-white text-4xl font-semibold tracking-wider'>{dataAdmin.filter (a => a.id_role === 'admin cabang').length}</h1>
                                         </div>
                                     </Link>
                                 )
@@ -153,7 +182,7 @@ const admin = () => {
                                 </div>
 
                                 {/* data count and button add data */}
-                                <h1 className='text-white text-4xl font-semibold tracking-wider'>1180</h1>
+                                <h1 className='text-white text-4xl font-semibold tracking-wider'>{dataAdmin.filter (a => a.id_role === 'admin ranting').length}</h1>
                             </div>
                         </Link>
                     </div>

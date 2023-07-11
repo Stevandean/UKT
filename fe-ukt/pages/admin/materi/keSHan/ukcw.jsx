@@ -134,7 +134,7 @@ const ukcw = () => {
     const getSoal = async () => {
         let id_lembar 
         //get id soal
-        await axios.post(BASE_URL + 'lembar_soal/ukt/ukcw', {data: ''}, headerConfig())
+        await axios.post(BASE_URL + 'lembar_soal/ukt/UKCW', {data: ''}, headerConfig())
         .then(res => {
             setIdLembar(res.data.data?.id_lembar_soal)
             id_lembar = res.data.data?.id_lembar_soal
@@ -166,11 +166,19 @@ const ukcw = () => {
         })
     }
 
-    useEffect(() => {
-      getSoal()
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
 
-      return () => {
-      }
+    useEffect(() => {
+        getSoal()
+        isLogged ()
+
+        return () => {
+        }
     }, [])
     
     return (

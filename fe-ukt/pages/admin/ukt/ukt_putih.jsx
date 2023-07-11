@@ -80,8 +80,16 @@ const ukt_putih = () => {
         router.push ('./detail_nilai_ukt_putih')
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataEvent ()
+        isLogged ()
     }, [])
 
     return (

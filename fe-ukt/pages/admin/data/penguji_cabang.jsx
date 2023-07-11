@@ -7,10 +7,14 @@ import Header from '../components/header'
 import Footer from '../components/footer'
 import Modal_penguji_cabang from '../components/modal_penguji_cabang'
 import Modal_delete from '../components/modal_delete'
+import { useRouter } from 'next/router'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const IMAGE_URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 const penguji_cabang = () => {
+
+    // deklarasi router
+    const router = useRouter ()
 
     // state modal
     const [showModalPengujiCabang, setShowModalPengujiCabang] = useState (false)
@@ -78,8 +82,16 @@ const penguji_cabang = () => {
         setIdPengujiCabang (selectedId)
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataPengujiCabang ()
+        isLogged ()
     }, [])
 
     return (

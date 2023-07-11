@@ -79,8 +79,16 @@ const ukcw = () => {
         router.push ('./detail_nilai_ukt_ukcw')
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataEvent ()
+        isLogged ()
     }, [])
 
     return (

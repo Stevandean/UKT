@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 //import model
-const models = require('../models/index');
+const models = require('../src/models/index');
 const { sequelize, Op, where } = require("sequelize");
 const localStorage = process.env.LOCAL_STORAGE_GENERAL + "csv/"
 const siswa = models.siswa;

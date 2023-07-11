@@ -82,10 +82,19 @@ const detail_siswa = () => {
         setShowModalDelete (true)
         setAction ('deleteSiswa')
         setIdSiswa (selectedId)
+        setRanting (ranting)
+    }
+
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
     }
 
     useEffect (() => {
         getDataSiswa ()
+        isLogged ()
     }, [])
 
     return (
@@ -207,7 +216,7 @@ const detail_siswa = () => {
                 <Modal_siswa />
              </globalState.Provider>
 
-             <globalState.Provider value={{ showModalDelete, setShowModalDelete, action, setDataSiswa, idSiswa }}>
+             <globalState.Provider value={{ showModalDelete, setShowModalDelete, action, setDataSiswa, idSiswa, ranting }}>
                 <Modal_delete />
              </globalState.Provider>
         </>

@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //import model
-const models = require('../../../models/index');
+const models = require('../../../src/models/index');
 const senam_siswa = models.senam_siswa;
 
 //endpoint ditulis disini

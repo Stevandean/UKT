@@ -6,9 +6,13 @@ import Sidebar from '../components/sidebar'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Modal_ukt_fisik from '../components/modal_ukt_fisik'
+import { useRouter } from 'next/router'
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const detail_fisik_hijau = () => {
+
+    // deklarasi router
+    const router = useRouter ()
 
     // state modal
     const [showModalUktFisik, setShowModalUktFisik] = useState (false)
@@ -110,8 +114,16 @@ const detail_fisik_hijau = () => {
         set_plank_privat_perempuan (selectedItem.Privat_prpn)
     }
 
+    // function login checker
+    const isLogged = () => {
+        if (localStorage.getItem ('token') === null || localStorage.getItem ('admin') === null) {
+            router.push ('/admin/login')
+        }
+    }
+
     useEffect (() => {
         getDataStandartFisik ()
+        isLogged ()
     }, [])
 
     return (
@@ -263,7 +275,7 @@ const detail_fisik_hijau = () => {
                             </div>
                         </div>
 
-                        {/* card kategori spir _ */}
+                        {/* card kategori spir perut bawah */}
                         <div className="grid grid-cols-12 place-content-center text-white text-lg text-center gap-x-2 mb-2">
                             <div className="col-span-3 bg-navy py-3 rounded-md">
                                 <h1>Spir Perut Bawah</h1>

@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 //import model
-const models = require('../../../models/index');
+const models = require('../../../src/models/index');
 const senam_detail = models.senam_detail;
 
 //endpoint ditulis disini
@@ -19,26 +19,6 @@ const senam_detail = models.senam_detail;
 //endpoint get data senam_detail
 app.get("/", Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), (req,res) => {
     senam_detail.findAll()
-    .then(senam_detail => {
-        res.json({
-            count: senam_detail.length,
-            data: senam_detail
-        })
-    })
-    .catch(error => {
-        res.json({
-            message: error.message
-        })
-    })    
-})
-
-//endpoint get data senam_detail by tipe_ukt
-app.get("/:id", Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), (req,res) => {
-    senam_detail.findAll({
-        where: {
-            tipe_ukt: req.params.id
-        }
-    })
     .then(senam_detail => {
         res.json({
             count: senam_detail.length,
