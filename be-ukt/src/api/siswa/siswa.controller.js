@@ -438,7 +438,8 @@ module.exports = {
     controllerAuth: async (req, res) => {
         siswa.findOne({
             where: {
-                nomor_urut: req.body.nomor_urut
+                nomor_urut: req.body.nomor_urut,
+                id_event: req.body.id_event
             },
         })
             .then(async (result) => {
