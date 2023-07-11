@@ -11,11 +11,13 @@ const sidebar = () => {
     // state role
     const [role, setRole] = useState ([])
     const [dataAdmin, setDataAdmin] = useState([])
+    const [foto, setfoto] = useState('')
 
-    const getRole = () => {
-        const role = JSON.parse(localStorage.getItem ('admin'))
+    const getRole = async () => {
+        const role = await JSON.parse(localStorage.getItem ('admin'))
         setDataAdmin (role)
         setRole (role)
+        setfoto(role.foto)
     }
 
     // deklarasi router
@@ -44,7 +46,7 @@ const sidebar = () => {
 
                     {/* photo profile */}
                     <div className={`${showSideBar ? 'block' : 'hidden'} h-fit rounded-full bg-gradient-to-r from-[#16D4FC] to-[#9A4BE9] p-0.5 mb-3`}>
-                        <img className='object-cover rounded-full w-28 h-28' src={IMAGE_URL + dataAdmin.foto} alt="" />
+                        <img className='object-cover rounded-full w-28 h-28' src={foto ? IMAGE_URL + foto : null} alt="admin" />
                     </div>
 
                     {/* username and name */}
