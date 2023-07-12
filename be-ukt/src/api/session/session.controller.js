@@ -1,5 +1,8 @@
 const models = require('../../models/index');
+const soal = models.soal;
+const lembar_soal = models.lembar_soal;
 const session = models.session;
+const { Sequelize, Op } = require("sequelize");
 
 module.exports = {
     controllerGetAll: async (req, res) => {
@@ -137,42 +140,74 @@ module.exports = {
             })
     },
     controllerStart: async (req, res) => {
-        let start = new Date()
-        let endDate = new Date()
-        let setdetik = endDate.setMilliseconds((endDate.getMilliseconds()) + 600000)
-        let end = new Date(setdetik)
+        try {
+            let start = new Date()
+            let endDate = new Date()
+            let setdetik = endDate.setMilliseconds((endDate.getMilliseconds()) + 600000)
+            let end = new Date(setdetik)
+                    
+            //get lembar soal
+            let lembarSoal = await lembar_soal.findOne({
+                where: {tipe_ukt: req.body.tipe_ukt}
+            })
 
-        let param = {
-            id_lembar_soal: req.body.id_lembar_soal,
-            id_siswa: req.body.id_siswa
-        }
-        console.log(param);
-        const cekData = await session.findOne({ where: param })
-        if (!cekData) {
-            let data = {
-                id_lembar_soal: req.body.id_lembar_soal,
-                id_siswa: req.body.id_siswa,
-                id_event: req.body.id_event,
-                nilai: 0,
-                start: start,
-                finish: end
+            const id_lembar_soal = lembarSoal.id_lembar_soal
+            const waktu = lembarSoal.waktu_pengerjaan
+            
+            let param = {
+                id_lembar_soal: id_lembar_soal,
+                id_siswa: req.body.id_siswa
             }
-            session.create(data)
-                .then(result => {
-                    res.json({
-                        message: "Ujian dimulai",
-                        data: result
+            let msg
+            const cekData = await session.findOne({ where: param })
+            if (!cekData) {
+                let data = {
+                    id_lembar_soal: id_lembar_soal,
+                    id_siswa: req.body.id_siswa,
+                    id_event: req.body.id_event,
+                    nilai: 0,
+                    start: start,
+                    finish: end
+                }
+                session.create(data)
+                    .then(res => {
+                        msg = "Ujian dimulai"
                     })
-                })
-                .catch(error => {
-                    res.json({
-                        message: error.message
+                    .catch(error => {
+                        return res.json({
+                            message: error.message
+                        })
                     })
+            } else {
+                msg = ("Ujian sudah dimulai")
+            }
+
+            //get soal untuk ujian
+            soal.findAll({
+                where: {
+                    id_lembar_soal: id_lembar_soal
+                },
+                order: [
+                    Sequelize.fn('RAND')
+                ],
+                limit: 20
+            })
+            .then(soal => {
+                res.json({
+                    message: msg,
+                    count: soal.length,
+                    waktu: waktu,
+                    soals: soal
                 })
-        } else {
+            })
+            .catch(error => {
+                res.json({
+                    message: error.message
+                })
+            })
+        } catch (error) {
             res.json({
-                message: "Ujian sudah dimulai",
-                data: cekData
+                message: error.message
             })
         }
     },

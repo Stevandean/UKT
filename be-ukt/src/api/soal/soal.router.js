@@ -13,22 +13,25 @@ const {
     controllerEdit,
     controllerDelete,
     controllerGetEmptySoal,
-    controllerGetByLembarSoal,
     controllerGetAnswerByLembarSoal,
     controllerGetExamQuestion,
+    controllerGetByTipe,
+    controllerGetCount,
 } = require('./soal.controller');
 
 
 const verifyRoles = require("../../middleware/verifyRoles")
+let allowedRoles = verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting")
 
-router.get('/', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetAll)
-router.get('/kosong', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetEmptySoal)
-router.get('/tipe/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetByLembarSoal)
-router.get('/tipe/kunci/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetAnswerByLembarSoal)
-router.get('/lembar_soal/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerGetExamQuestion)
-router.post('/', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerAdd)
-router.post('/kunci_jawaban', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerAdd)
-router.put('/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerEdit)
-router.delete('/:id', Auth, verifyRoles("admin", "super admin", "admin ranting", "admin cabang", "pengurus cabang", "pengurus ranting", "penguji cabang", "penguji ranting"), controllerDelete)
+router.get('/', Auth, allowedRoles, controllerGetAll)
+router.get('/kosong', Auth, allowedRoles, controllerGetEmptySoal)
+router.get('/count', Auth, allowedRoles, controllerGetCount)
+router.get('/tipe/:tipe_ukt', Auth, allowedRoles, controllerGetByTipe)
+router.get('/kunci/:tipe_ukt', Auth, allowedRoles, controllerGetAnswerByLembarSoal)
+router.get('/lembar_soal/:id', Auth, allowedRoles, controllerGetExamQuestion)
+router.post('/:tipe_ukt', Auth, allowedRoles, controllerAdd)
+router.post('/kunci_jawaban', Auth, allowedRoles, controllerAdd)
+router.put('/:id', Auth, allowedRoles, controllerEdit)
+router.delete('/:id', Auth, allowedRoles, controllerDelete)
 
 module.exports = router;
